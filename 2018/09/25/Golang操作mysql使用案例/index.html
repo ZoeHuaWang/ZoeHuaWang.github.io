@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Go记录," />
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="基本信息姓名: 王振华出生年月: 1989 年11月毕业院校：南昌航空大学大学专业: 机电一体化技术个人电子邮箱: w19891102@126.com 个人简介  2011年毕业于南昌航空大学,2012年进军上海发展,2015年进入计算机行业领域,目前是腾讯上海分公司合作伙伴企业员工,主要负责腾讯大客户开发技术上的相关支持工作。熟练掌握Python3及Golang开发语言,具备Docker虚拟化等">
-<meta name="keywords" content="繁花社3">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="Golang提供了database/sql包用于对SQL数据库的访问,作为操作数据库的入口对象sql.DB,主要为我们提供了两个重要的功能:1、sql.DB通过数据库驱动为我们提供管理底层数据库连接的打开和关闭操作。2、sql.DB为我们管理数据库连接池。需要注意的是，sql.DB表示操作数据库的抽象访问接口,而非一个数据库连接对象;它可以根据driver打开关闭数据库连接，管理连接池。正在使用的">
+<meta name="keywords" content="Go记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang操作mysql使用案例">
+<meta property="og:url" content="http://yoursite.com/2018/09/25/Golang操作mysql使用案例/index.html">
 <meta property="og:site_name" content="繁花社">
-<meta property="og:description" content="基本信息姓名: 王振华出生年月: 1989 年11月毕业院校：南昌航空大学大学专业: 机电一体化技术个人电子邮箱: w19891102@126.com 个人简介  2011年毕业于南昌航空大学,2012年进军上海发展,2015年进入计算机行业领域,目前是腾讯上海分公司合作伙伴企业员工,主要负责腾讯大客户开发技术上的相关支持工作。熟练掌握Python3及Golang开发语言,具备Docker虚拟化等">
+<meta property="og:description" content="Golang提供了database/sql包用于对SQL数据库的访问,作为操作数据库的入口对象sql.DB,主要为我们提供了两个重要的功能:1、sql.DB通过数据库驱动为我们提供管理底层数据库连接的打开和关闭操作。2、sql.DB为我们管理数据库连接池。需要注意的是，sql.DB表示操作数据库的抽象访问接口,而非一个数据库连接对象;它可以根据driver打开关闭数据库连接，管理连接池。正在使用的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-25T07:42:21.333Z">
+<meta property="og:updated_time" content="2018-09-25T08:01:55.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="基本信息姓名: 王振华出生年月: 1989 年11月毕业院校：南昌航空大学大学专业: 机电一体化技术个人电子邮箱: w19891102@126.com 个人简介  2011年毕业于南昌航空大学,2012年进军上海发展,2015年进入计算机行业领域,目前是腾讯上海分公司合作伙伴企业员工,主要负责腾讯大客户开发技术上的相关支持工作。熟练掌握Python3及Golang开发语言,具备Docker虚拟化等">
+<meta name="twitter:title" content="Golang操作mysql使用案例">
+<meta name="twitter:description" content="Golang提供了database/sql包用于对SQL数据库的访问,作为操作数据库的入口对象sql.DB,主要为我们提供了两个重要的功能:1、sql.DB通过数据库驱动为我们提供管理底层数据库连接的打开和关闭操作。2、sql.DB为我们管理数据库连接池。需要注意的是，sql.DB表示操作数据库的抽象访问接口,而非一个数据库连接对象;它可以根据driver打开关闭数据库连接，管理连接池。正在使用的">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/25/Golang操作mysql使用案例/"/>
 
 
 
 
 
-  <title>About Me | 繁花社</title>
+  <title>Golang操作mysql使用案例 | 繁花社</title>
   
 
 
@@ -242,38 +242,185 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/Golang操作mysql使用案例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zoe.Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="繁花社">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">About Me</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p><font color="gray" size="6" face="楷体">基本信息</font><br>姓名: 王振华<br>出生年月: 1989 年11月<br>毕业院校：南昌航空大学<br>大学专业: 机电一体化技术<br>个人电子邮箱: <a href="mailto:w19891102@126.com" target="_blank" rel="noopener">w19891102@126.com</a></p>
-<p><font color="gray" size="6" face="楷体">个人简介</font></p>
-<blockquote>
-<p>2011年毕业于南昌航空大学,2012年进军上海发展,2015年进入计算机行业领域,目前是腾讯上海分公司合作伙伴企业员工,主要负责腾讯大客户开发技术上的相关支持工作。熟练掌握Python3及Golang开发语言,具备Docker虚拟化等当下流行技术</p>
-</blockquote>
-
+          <h1 class="post-title" itemprop="name headline">Golang操作mysql使用案例</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T15:48:56+08:00">
+                2018-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          		  		  
+          
+             <span id="/2018/09/25/Golang操作mysql使用案例/" class="leancloud_visitors" data-flag-title="Golang操作mysql使用案例">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Golang提供了database/sql包用于对SQL数据库的访问,作为操作数据库的入口对象sql.DB,主要为我们提供了两个重要的功能:1、sql.DB通过数据库驱动为我们提供管理底层数据库连接的打开和关闭操作。2、sql.DB为我们管理数据库连接池。需要注意的是，sql.DB表示操作数据库的抽象访问接口,而非一个数据库连接对象;它可以根据driver打开关闭数据库连接，管理连接池。正在使用的连接被标记为繁忙，用完后回到连接池等待下次使用。所以，如果你没有把连接释放回连接池，会导致过多连接使系统资源耗尽。
+              </div>
+          
+				
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;database/sql&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	_ &quot;github.com/go-sql-driver/mysql&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type DbWorker struct &#123;</span><br><span class="line">	Dsn      string</span><br><span class="line">	Db       *sql.DB</span><br><span class="line">	UserInfo userTB</span><br><span class="line">&#125;</span><br><span class="line">type userTB struct &#123;</span><br><span class="line">	Id   int</span><br><span class="line">	Name sql.NullString</span><br><span class="line">	Age  sql.NullInt64</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	var err error</span><br><span class="line">	dbw := DbWorker&#123;</span><br><span class="line">		Dsn: &quot;root:123456@tcp(localhost:3306)/sqlx_db?charset=utf8mb4&quot;,</span><br><span class="line">	&#125;</span><br><span class="line">	dbw.Db, err = sql.Open(&quot;mysql&quot;, dbw.Dsn)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		panic(err)</span><br><span class="line">		return</span><br><span class="line">	&#125;</span><br><span class="line">	defer dbw.Db.Close()</span><br><span class="line"></span><br><span class="line">	dbw.insertData()</span><br><span class="line">	dbw.queryData()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (dbw *DbWorker) insertData() &#123;</span><br><span class="line">	stmt, _ := dbw.Db.Prepare(`INSERT INTO user (name, age) VALUES (?, ?)`)</span><br><span class="line">	defer stmt.Close()</span><br><span class="line"></span><br><span class="line">	ret, err := stmt.Exec(&quot;xys&quot;, 23)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Printf(&quot;insert data error: %v\n&quot;, err)</span><br><span class="line">		return</span><br><span class="line">	&#125;</span><br><span class="line">	if LastInsertId, err := ret.LastInsertId(); nil == err &#123;</span><br><span class="line">		fmt.Println(&quot;LastInsertId:&quot;, LastInsertId)</span><br><span class="line">	&#125;</span><br><span class="line">	if RowsAffected, err := ret.RowsAffected(); nil == err &#123;</span><br><span class="line">		fmt.Println(&quot;RowsAffected:&quot;, RowsAffected)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (dbw *DbWorker) QueryDataPre() &#123;</span><br><span class="line">	dbw.UserInfo = userTB&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">func (dbw *DbWorker) queryData() &#123;</span><br><span class="line">	stmt, _ := dbw.Db.Prepare(`SELECT * From user where age &gt;= ? AND age &lt; ?`)</span><br><span class="line">	defer stmt.Close()</span><br><span class="line"></span><br><span class="line">	dbw.QueryDataPre()</span><br><span class="line"></span><br><span class="line">	rows, err := stmt.Query(20, 30)</span><br><span class="line">	defer rows.Close()</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Printf(&quot;insert data error: %v\n&quot;, err)</span><br><span class="line">		return</span><br><span class="line">	&#125;</span><br><span class="line">	for rows.Next() &#123;</span><br><span class="line">		rows.Scan(&amp;dbw.UserInfo.Id, &amp;dbw.UserInfo.Name, &amp;dbw.UserInfo.Age)</span><br><span class="line">		if err != nil &#123;</span><br><span class="line">			fmt.Printf(err.Error())</span><br><span class="line">			continue</span><br><span class="line">		&#125;</span><br><span class="line">		if !dbw.UserInfo.Name.Valid &#123;</span><br><span class="line">			dbw.UserInfo.Name.String = &quot;&quot;</span><br><span class="line">		&#125;</span><br><span class="line">		if !dbw.UserInfo.Age.Valid &#123;</span><br><span class="line">			dbw.UserInfo.Age.Int64 = 0</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println(&quot;get data, id: &quot;, dbw.UserInfo.Id, &quot; name: &quot;, dbw.UserInfo.Name.String, &quot; age: &quot;, int(dbw.UserInfo.Age.Int64))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	err = rows.Err()</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Printf(err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Go记录/" rel="tag"># Go记录</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/24/基于 Python 3 的 Flask 教程中文版/" rel="next" title="基于Python3的Flask教程中文版">
+                <i class="fa fa-chevron-left"></i> 基于Python3的Flask教程中文版
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/25/Go操作mysql建表问题的解决办法/" rel="prev" title="Go操作mysql建表问题的解决办法">
+                Go操作mysql建表问题的解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
