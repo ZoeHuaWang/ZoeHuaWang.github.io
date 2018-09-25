@@ -90,7 +90,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/2485282189.png">
 <meta property="og:image" content="http://yoursite.com/img/3683651371.png">
-<meta property="og:updated_time" content="2018-09-25T08:32:13.356Z">
+<meta property="og:updated_time" content="2018-09-25T10:07:50.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7.3编译安装go1.8.1">
 <meta name="twitter:description" content="go的源码安装非常简单，只需运行源码包中src/all.bash，等到出现 ALL TESTS PASSED 字样就安装好了，但是在源码安装1.5版本以上的go时会报 ERROR: Cannot find /root/go1.4/bin/go 这个错误，这是由于go 1.5版以后的编译安装需要1.4版本go，所以如果想要通过源码方式安装高版本go，必须先安装好1.4版本的go。">
@@ -322,6 +322,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/25/CentOS7-3编译安装go1-8-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/25/CentOS7-3编译安装go1-8-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           		  		  
@@ -443,6 +453,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -832,6 +845,28 @@ $(function() {
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'WCRBM7wD8RcRk32tiQxzW6jC-gzGzoHsz',
+        appKey: 'jlibL3e3lxavoHWACKpxGfoR',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
