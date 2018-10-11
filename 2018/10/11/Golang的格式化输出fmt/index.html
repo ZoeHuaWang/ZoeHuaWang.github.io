@@ -93,14 +93,14 @@
 <meta name="description" content="golang 的fmt 包实现了格式化I/O函数，类似于C的 printf 和 scanf。">
 <meta name="keywords" content="Go记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Golang的格式化输出fmt.Printf">
+<meta property="og:title" content="Golang的格式化输出">
 <meta property="og:url" content="http://yoursite.com/2018/10/11/Golang的格式化输出fmt/index.html">
 <meta property="og:site_name" content="繁花社">
 <meta property="og:description" content="golang 的fmt 包实现了格式化I/O函数，类似于C的 printf 和 scanf。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-11T02:14:24.050Z">
+<meta property="og:updated_time" content="2018-10-11T02:18:20.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Golang的格式化输出fmt.Printf">
+<meta name="twitter:title" content="Golang的格式化输出">
 <meta name="twitter:description" content="golang 的fmt 包实现了格式化I/O函数，类似于C的 printf 和 scanf。">
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>Golang的格式化输出fmt.Printf | 繁花社</title>
+  <title>Golang的格式化输出 | 繁花社</title>
   
 
 
@@ -315,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Golang的格式化输出fmt.Printf</h1>
+          <h1 class="post-title" itemprop="name headline">Golang的格式化输出</h1>
         
 
         <div class="post-meta">
@@ -367,7 +367,7 @@
 
           		  		  
           
-             <span id="/2018/10/11/Golang的格式化输出fmt/" class="leancloud_visitors" data-flag-title="Golang的格式化输出fmt.Printf">
+             <span id="/2018/10/11/Golang的格式化输出fmt/" class="leancloud_visitors" data-flag-title="Golang的格式化输出">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,7 +411,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">字符串与字节切片</span><br><span class="line">占位符     说明                              举例                           输出</span><br><span class="line">%s      输出字符串表示（string类型或[]byte)   Printf(&quot;%s&quot;, []byte(&quot;Go语言&quot;))  Go语言</span><br><span class="line">%q      双引号围绕的字符串，由Go语法安全地转义  Printf(&quot;%q&quot;, &quot;Go语言&quot;)         &quot;Go语言&quot;</span><br><span class="line">%x      十六进制，小写字母，每字节两个字符      Printf(&quot;%x&quot;, &quot;golang&quot;)         676f6c616e67</span><br><span class="line">%X      十六进制，大写字母，每字节两个字符      Printf(&quot;%X&quot;, &quot;golang&quot;)         676F6C616E67</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">指针</span><br><span class="line">占位符         说明                      举例                             输出</span><br><span class="line">%p      十六进制表示，前缀 0x          Printf(&quot;%p&quot;, &amp;people)             0x4f57f0</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">其它标记</span><br><span class="line">占位符      说明                             举例          输出</span><br><span class="line">+      总打印数值的正负号；对于%q（%+q）保证只输出ASCII编码的字符。 </span><br><span class="line">                                           Printf(&quot;%+q&quot;, &quot;中文&quot;)  &quot;\u4e2d\u6587&quot;</span><br><span class="line">-      在右侧而非左侧填充空格（左对齐该区域）</span><br><span class="line">#      备用格式：为八进制添加前导 0（%#o）      Printf(&quot;%#U&quot;, &apos;中&apos;)      U+4E2D</span><br><span class="line">       为十六进制添加前导 0x（%#x）或 0X（%#X），为 %p（%#p）去掉前导 0x；</span><br><span class="line">       如果可能的话，%q（%#q）会打印原始 （即反引号围绕的）字符串；</span><br><span class="line">       如果是可打印字符，%U（%#U）会写出该字符的</span><br><span class="line">       Unicode 编码形式（如字符 x 会被打印成 U+0078 &apos;x&apos;）。</span><br><span class="line">&apos; &apos;    (空格)为数值中省略的正负号留出空白（% d）；</span><br><span class="line">       以十六进制（% x, % X）打印字符串或切片时，在字节之间用空格隔开</span><br><span class="line">0      填充前导的0而非空格；对于数字，这会将填充移到正负号之后</span><br></pre></td></tr></table></figure>
-<font color="#FF8000" size="4" face="宋体"><br>golang没有 ‘%u’ 点位符，若整数为无符号类型，默认就会被打印成无符号的。<br><br>宽度与精度的控制格式以Unicode码点为单位。宽度为该数值占用区域的最小宽度；精度为小数点之后的位数。<br>操作数的类型为int时，宽度与精度都可用字符 ‘*’ 表示。<br><br>对于 %g/%G 而言，精度为所有数字的总数，例如：123.45，%.4g 会打印123.5，（而 %6.2f 会打印123.45）。<br><br>%e 和 %f 的默认精度为6<br><br>对大多数的数值类型而言，宽度为输出的最小字符数，如果必要的话会为已格式化的形式填充空格。<br><br>而以字符串类型，精度为输出的最大字符数，如果必要的话会直接截断。<br></font>
+<font color="#FF8000" size="4" face="微软雅黑"><br>golang没有 ‘%u’ 点位符，若整数为无符号类型，默认就会被打印成无符号的。<br><br>宽度与精度的控制格式以Unicode码点为单位。宽度为该数值占用区域的最小宽度；精度为小数点之后的位数。<br>操作数的类型为int时，宽度与精度都可用字符 ‘*’ 表示。<br><br>对于 %g/%G 而言，精度为所有数字的总数，例如：123.45，%.4g 会打印123.5，（而 %6.2f 会打印123.45）。<br><br>%e 和 %f 的默认精度为6<br><br>对大多数的数值类型而言，宽度为输出的最小字符数，如果必要的话会为已格式化的形式填充空格。<br><br>而以字符串类型，精度为输出的最大字符数，如果必要的话会直接截断。<br></font>
       
     </div>
     
