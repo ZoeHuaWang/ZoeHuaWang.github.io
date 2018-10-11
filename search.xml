@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Golang的格式化输出fmt.Printf]]></title>
+    <url>%2F2018%2F10%2F11%2FGolang%E7%9A%84fmt%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA%2F</url>
+    <content type="text"><![CDATA[123456# 定义示例类型和变量type Human struct &#123; Name string&#125;var people = Human&#123;Name:&quot;zhangsan&quot;&#125;]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Go记录</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CentOS7.3编译安装go1.8.1]]></title>
     <url>%2F2018%2F09%2F25%2FCentOS7-3%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85go1-8-1%2F</url>
     <content type="text"><![CDATA[go1.8.1下载地址https://golang.org/dl/，这里下载go1.8.1.src.tar.gz和go1.4.3.src.tar.gz，下来以后算下md5哈希和官网比对下，以免被加盐； go1.4以上版本安装的时候需先安装下1.4；要么会报类似下面的错：1234##### Building Go bootstrap tool.cmd/distERROR: Cannot find /root/go1.4/bin/go.Set $GOROOT_BOOTSTRAP to a working Go tree &gt;= Go 1.4. 开始安装：12345yum install gcc glibc-devel -ytar -C /root/ -xvf go1.4.3.src.tar.gzmv /root/go/ /root/go1.4cd /root/go1.4/src./all.bash 约１分钟左右安装完成，设置下环境变量并重新加载123echo &quot;export PATH=$PATH:/root/go1.4/bin&quot; &gt;&gt; /etc/profileecho &quot;export GOROOT=/root/go1.4&quot; &gt;&gt; /etc/profilesource /etc/profile 使用go version查看版本已经是go1.4.3了 开始安装go1.8.1123tar -C /usr/local/ -xvf go1.8.1.src.tar.gzcd /usr/local/go/src/./all.bash 安装完成以后，清除掉之前添加的/etc/profile里面的环境变量信息，增加如下配置123export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/usr/local/go-projects 重新加载配置source /etc/profile 查看版本go version,已经是1.8.1了 创建go的hello world程序：1234567package mainimport &quot;fmt&quot;func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125; 保存为hello.go直接运行 go run hello.go返回hello，world！ 至此，go1.8.1安装完毕！或者直接使用编译好的包：go1.10.1.linux-amd64.tar.gz下载go$wget https://studygolang.com/dl/golang/go1.10.1.linux-amd64.tar.gz$tar -xvf go1.10.1.linux-amd64.tar.gz设置环境变量$vim /etc/profile添加12345export GOPATH=/data/work/gopathexport GOBIN=$GOPATH/binexport GOROOT=/data/work/goexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GOBINsource /etc/profile $GOPATH工作目录结构，约定有三个子目录（需要自行创建）：src ——存放源代码文件pkg——存放编译后的文件bin ——存放编译后的可执行文件测试环境:创建目录 /data/work/gopath/src123$mkdir helloworld$cd helloworld$vim main.go 输入:1234567package main import &quot;fmt&quot; func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125;]]></content>
