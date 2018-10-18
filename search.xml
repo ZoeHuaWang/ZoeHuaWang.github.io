@@ -69,7 +69,7 @@
   <entry>
     <title><![CDATA[学习中的一些记录，随心记]]></title>
     <url>%2F2018%2F09%2F24%2F%E9%9A%8F%E5%BF%83%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[Python扩展包大全：https://www.lfd.uci.edu/~gohlke/pythonlibsdocker删除none标签镜像：1$ docker images|grep none|awk '&#123;print $3 &#125;'|xargs docker rmi go使用reflect.TypeOf(x)判断x的数据类型：import “reflect”查看当前目录下各文件夹占用空间，深度1：1$ du -h --max-depth=1 Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：1234SET CGO_ENABLED=0SET GOOS=linux SET GOARCH=amd64go build]]></content>
+    <content type="text"><![CDATA[Python扩展包大全：https://www.lfd.uci.edu/~gohlke/pythonlibsdocker删除none标签镜像：1$ docker images|grep none|awk '&#123;print $3 &#125;'|xargs docker rmi go使用reflect.TypeOf(x)判断x的数据类型：import “reflect”查看当前目录下各文件夹占用空间，深度1：1$ du -h --max-depth=1 Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：1234SET CGO_ENABLED=0SET GOOS=linux SET GOARCH=amd64go build Linux后台运行并且不生成nohup.out文件：1nohup ./程序名 &gt;/dev/null 2&gt;&amp;1 &amp;]]></content>
       <categories>
         <category>随心笔记</category>
       </categories>
