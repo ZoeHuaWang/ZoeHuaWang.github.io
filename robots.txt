@@ -11,4 +11,4 @@ Disallow: /vendors/
 Disallow: /fancybox/
 
 Sitemap: https://zoehuawang.github.io/sitemap.xml
-Sitemap: https://zoehuawang.github.io/baidusitemap.xml
+#Sitemap: https://zoehuawang.github.io/baidusitemap.xml
