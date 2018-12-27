@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Go的cron定时任务用法]]></title>
+    <url>%2F2018%2F12%2F27%2FGo%E7%9A%84cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%94%A8%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[安装第三方库robfig/cron：1go get -u github.com/robfig/cron 应用： 每秒钟执行一次1234567891011121314151617181920package mainimport ( &quot;log&quot; &quot;github.com/robfig/cron&quot;)func main() &#123; i := 0 c := cron.New() //秒 分 时 日 月 周 spec := &quot;*/1 * * * * *&quot; c.AddFunc(spec, func() &#123; i++ log.Println(&quot;execute per second&quot;, i) &#125;) c.Start() select &#123;&#125;&#125; 其中注意select的用法： golang的select的功能和 select, poll, epoll相似。也可以用for{}实现]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Go记录</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Go数学运算随机数]]></title>
     <url>%2F2018%2F11%2F15%2FGo%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97%E9%9A%8F%E6%9C%BA%E6%95%B0%2F</url>
     <content type="text"><![CDATA[总是要有使用随机数的情况。这就需要使用math包。12345678910package mainimport( &quot;fmt&quot; &quot;math/rand&quot;)func main()&#123; fmt.Println(&quot;My random number is&quot;, rand.Intn(200))&#125; 运行上面的代码就会发现每次返回的随机数是不变的。因为运行环境是没有发生变化的。为了每次得到不同的随机数，就需要一个随机数种子。 时间是不停的在发生变化的，利用time.Now().UnixNano()获得一个带纳秒的时间戳，形成一个新源。然后随机数就可以有想要的效果了。123456789101112package mainimport( &quot;fmt&quot; &quot;math/rand&quot; &quot;time&quot;)func main()&#123; rand.Seed(time.Now().UnixNano()) fmt.Println(&quot;My random number is&quot;, rand.Intn(200))&#125;]]></content>
@@ -23,17 +34,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS7.3编译安装go1.8.1]]></title>
-    <url>%2F2018%2F09%2F25%2FCentOS7-3%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85go1-8-1%2F</url>
-    <content type="text"><![CDATA[go1.8.1下载地址https://golang.org/dl/，这里下载go1.8.1.src.tar.gz和go1.4.3.src.tar.gz，下来以后算下md5哈希和官网比对下，以免被加盐； go1.4以上版本安装的时候需先安装下1.4；要么会报类似下面的错：1234##### Building Go bootstrap tool.cmd/distERROR: Cannot find /root/go1.4/bin/go.Set $GOROOT_BOOTSTRAP to a working Go tree &gt;= Go 1.4. 开始安装：12345yum install gcc glibc-devel -ytar -C /root/ -xvf go1.4.3.src.tar.gzmv /root/go/ /root/go1.4cd /root/go1.4/src./all.bash 约１分钟左右安装完成，设置下环境变量并重新加载123echo &quot;export PATH=$PATH:/root/go1.4/bin&quot; &gt;&gt; /etc/profileecho &quot;export GOROOT=/root/go1.4&quot; &gt;&gt; /etc/profilesource /etc/profile 使用go version查看版本已经是go1.4.3了 开始安装go1.8.1123tar -C /usr/local/ -xvf go1.8.1.src.tar.gzcd /usr/local/go/src/./all.bash 安装完成以后，清除掉之前添加的/etc/profile里面的环境变量信息，增加如下配置123export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/usr/local/go-projects 重新加载配置source /etc/profile 查看版本go version,已经是1.8.1了 创建go的hello world程序：1234567package mainimport &quot;fmt&quot;func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125; 保存为hello.go直接运行 go run hello.go返回hello，world！ 至此，go1.8.1安装完毕！或者直接使用编译好的包：go1.10.1.linux-amd64.tar.gz下载go$wget https://studygolang.com/dl/golang/go1.10.1.linux-amd64.tar.gz$tar -xvf go1.10.1.linux-amd64.tar.gz设置环境变量$vim /etc/profile添加12345export GOPATH=/data/work/gopathexport GOBIN=$GOPATH/binexport GOROOT=/data/work/goexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GOBINsource /etc/profile $GOPATH工作目录结构，约定有三个子目录（需要自行创建）：src ——存放源代码文件pkg——存放编译后的文件bin ——存放编译后的可执行文件测试环境:创建目录 /data/work/gopath/src123$mkdir helloworld$cd helloworld$vim main.go 输入:1234567package main import &quot;fmt&quot; func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125;]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>Linux上安装GO</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Linux awk命令详解]]></title>
     <url>%2F2018%2F09%2F25%2Fawk%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[默认每行按空格或TAB分割：awk &#39;{print $1,$4}&#39; log.txt -F,指定分割字符：awk -F : &#39;{print $1,$4}&#39; log.txt 指定多个分割字符,先用:分割,然后再用,分割：awk -F &#39;[:,]&#39; &#39;{print $1,$4}&#39; log.txt -v,指定变量：awk -v a=1 -v b=s &#39;{print $1,$1+a,$1b}&#39; log.txt -f,调用awk脚本：awk -f script.awk log.txt //,纯字符匹配：awk &#39;/dockerroot/&#39; /etc/passwd !//,纯字符不匹配：awk &#39;!/dockerroot/&#39; /etc/passwd /|/,匹配a1或a2：awk &#39;!/a1|a2/&#39; /etc/passwd ~//,字段值匹配：awk &#39;$1~/root/&#39; /etc/passwd !~//,字段值不匹配：awk -F : &#39;$1!~/root/&#39; /etc/passwd IF语句,必须用在{}中，且比较内容用()扩起来if…else…：awk -F: &#39;{if($1~/root/) {print $1} else {print $2}}&#39; /etc/passwd 逻辑运算符：&amp;&amp;?|| 条件表达式：== != &gt; &gt;= while语句：awk -F: &#39;BEGIN{i=1} {while(i&lt;8) print $i,i++}&#39; /etc/passwd NF、NR：NF代表每行字段数，NR代表行号]]></content>
@@ -42,6 +42,17 @@
       </categories>
       <tags>
         <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7.3编译安装go1.8.1]]></title>
+    <url>%2F2018%2F09%2F25%2FCentOS7-3%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85go1-8-1%2F</url>
+    <content type="text"><![CDATA[go1.8.1下载地址https://golang.org/dl/，这里下载go1.8.1.src.tar.gz和go1.4.3.src.tar.gz，下来以后算下md5哈希和官网比对下，以免被加盐； go1.4以上版本安装的时候需先安装下1.4；要么会报类似下面的错：1234##### Building Go bootstrap tool.cmd/distERROR: Cannot find /root/go1.4/bin/go.Set $GOROOT_BOOTSTRAP to a working Go tree &gt;= Go 1.4. 开始安装：12345yum install gcc glibc-devel -ytar -C /root/ -xvf go1.4.3.src.tar.gzmv /root/go/ /root/go1.4cd /root/go1.4/src./all.bash 约１分钟左右安装完成，设置下环境变量并重新加载123echo &quot;export PATH=$PATH:/root/go1.4/bin&quot; &gt;&gt; /etc/profileecho &quot;export GOROOT=/root/go1.4&quot; &gt;&gt; /etc/profilesource /etc/profile 使用go version查看版本已经是go1.4.3了 开始安装go1.8.1123tar -C /usr/local/ -xvf go1.8.1.src.tar.gzcd /usr/local/go/src/./all.bash 安装完成以后，清除掉之前添加的/etc/profile里面的环境变量信息，增加如下配置123export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/usr/local/go-projects 重新加载配置source /etc/profile 查看版本go version,已经是1.8.1了 创建go的hello world程序：1234567package mainimport &quot;fmt&quot;func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125; 保存为hello.go直接运行 go run hello.go返回hello，world！ 至此，go1.8.1安装完毕！或者直接使用编译好的包：go1.10.1.linux-amd64.tar.gz下载go$wget https://studygolang.com/dl/golang/go1.10.1.linux-amd64.tar.gz$tar -xvf go1.10.1.linux-amd64.tar.gz设置环境变量$vim /etc/profile添加12345export GOPATH=/data/work/gopathexport GOBIN=$GOPATH/binexport GOROOT=/data/work/goexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GOBINsource /etc/profile $GOPATH工作目录结构，约定有三个子目录（需要自行创建）：src ——存放源代码文件pkg——存放编译后的文件bin ——存放编译后的可执行文件测试环境:创建目录 /data/work/gopath/src123$mkdir helloworld$cd helloworld$vim main.go 输入:1234567package main import &quot;fmt&quot; func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125;]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Linux上安装GO</tag>
       </tags>
   </entry>
   <entry>
@@ -78,17 +89,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[基于Python3的Flask教程中文版]]></title>
-    <url>%2F2018%2F09%2F24%2F%E5%9F%BA%E4%BA%8E%20Python%203%20%E7%9A%84%20Flask%20%E6%95%99%E7%A8%8B%E4%B8%AD%E6%96%87%E7%89%88%2F</url>
-    <content type="text"><![CDATA[第一章：Hello, World!第二章：模板第三章：Web表单第四章：数据库第五章：用户登录第六章：个人主页和头像第七章：错误处理第八章：粉丝第九章：分页第十章：邮件支持第十一章：美化第十二章：日期和时间第十三章：国际化和本地化第十四章：Ajax第十五章：优化应用结构第十六章：全文搜索第十七章：Linux上的部署第十八章：Heroku上的部署第十九章：Docker容器上的部署第二十章：加点JavaScript魔法第二十一章：用户通知第二十二章：后台作业第二十三章：应用程序编程接口（API）]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Flask教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[学习中的一些记录，随心记]]></title>
     <url>%2F2018%2F09%2F24%2F%E9%9A%8F%E5%BF%83%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[Python扩展包大全：https://www.lfd.uci.edu/~gohlke/pythonlibsdocker删除none标签镜像：1$ docker images|grep none|awk '&#123;print $3 &#125;'|xargs docker rmi go使用reflect.TypeOf(x)判断x的数据类型：import “reflect”查看当前目录下各文件夹占用空间，深度1：1$ du -h --max-depth=1 Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：1234SET CGO_ENABLED=0SET GOOS=linux SET GOARCH=amd64go build Linux后台运行并且不生成nohup.out文件：1nohup ./程序名 &gt;/dev/null 2&gt;&amp;1 &amp; 抓包命令 ：12tcpdump -iany host 127.0.0.1 -XNnn tcpdump -iany port 80 -XNnn]]></content>
@@ -97,6 +97,17 @@
       </categories>
       <tags>
         <tag>烂笔头</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[基于Python3的Flask教程中文版]]></title>
+    <url>%2F2018%2F09%2F24%2F%E5%9F%BA%E4%BA%8E%20Python%203%20%E7%9A%84%20Flask%20%E6%95%99%E7%A8%8B%E4%B8%AD%E6%96%87%E7%89%88%2F</url>
+    <content type="text"><![CDATA[第一章：Hello, World!第二章：模板第三章：Web表单第四章：数据库第五章：用户登录第六章：个人主页和头像第七章：错误处理第八章：粉丝第九章：分页第十章：邮件支持第十一章：美化第十二章：日期和时间第十三章：国际化和本地化第十四章：Ajax第十五章：优化应用结构第十六章：全文搜索第十七章：Linux上的部署第十八章：Heroku上的部署第十九章：Docker容器上的部署第二十章：加点JavaScript魔法第二十一章：用户通知第二十二章：后台作业第二十三章：应用程序编程接口（API）]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Flask教程</tag>
       </tags>
   </entry>
   <entry>
