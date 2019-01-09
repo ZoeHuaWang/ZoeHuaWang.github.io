@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="繁花社">
 <meta property="og:description" content="记录平时学习的一些资源，做下记录。避免麻烦的重复百度谷歌">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-03T05:57:17.255Z">
+<meta property="og:updated_time" content="2019-01-03T06:03:41.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习中的一些记录，随心记">
 <meta name="twitter:description" content="记录平时学习的一些资源，做下记录。避免麻烦的重复百度谷歌">
@@ -408,8 +408,7 @@
 <h2 id="Golang-在windows下编译Linux下可执行文件-一定要用cmd-，在程序根目录下设置编译环境："><a href="#Golang-在windows下编译Linux下可执行文件-一定要用cmd-，在程序根目录下设置编译环境：" class="headerlink" title="Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境："></a>Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET CGO_ENABLED=0</span><br><span class="line">SET GOOS=linux  </span><br><span class="line">SET GOARCH=amd64</span><br><span class="line">go build</span><br></pre></td></tr></table></figure>
 <h2 id="Linux后台运行并且不生成nohup-out文件："><a href="#Linux后台运行并且不生成nohup-out文件：" class="headerlink" title="Linux后台运行并且不生成nohup.out文件："></a>Linux后台运行并且不生成nohup.out文件：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./程序名 &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 <h2 id="抓包命令-："><a href="#抓包命令-：" class="headerlink" title="抓包命令 ："></a>抓包命令 ：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -iany host 127.0.0.1 -XNnn </span><br><span class="line">tcpdump -iany port 80 -XNnn</span><br></pre></td></tr></table></figure>
-<p>php容器中添加pdo_mysql扩展模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-php-ext-install pdo_mysql</span><br></pre></td></tr></table></figure></p>
-
+<h2 id="php容器中添加pdo-mysql扩展模块"><a href="#php容器中添加pdo-mysql扩展模块" class="headerlink" title="php容器中添加pdo_mysql扩展模块"></a>php容器中添加pdo_mysql扩展模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-php-ext-install pdo_mysql</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -468,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/24/基于 Python 3 的 Flask 教程中文版/" rel="next" title="基于Python3的Flask教程中文版">
-                <i class="fa fa-chevron-left"></i> 基于Python3的Flask教程中文版
+              <a href="/2018/09/24/Golang中json、map、struct互相转换/" rel="next" title="Golang中json、map、struct互相转换">
+                <i class="fa fa-chevron-left"></i> Golang中json、map、struct互相转换
               </a>
             
           </div>
@@ -478,8 +477,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/25/Golang操作mysql使用案例/" rel="prev" title="Golang操作mysql使用案例">
-                Golang操作mysql使用案例 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/24/基于 Python 3 的 Flask 教程中文版/" rel="prev" title="基于Python3的Flask教程中文版">
+                基于Python3的Flask教程中文版 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -564,7 +563,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -653,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python扩展包大全：https-www-lfd-uci-edu-gohlke-pythonlibs"><span class="nav-number">1.</span> <span class="nav-text">Python扩展包大全：https://www.lfd.uci.edu/~gohlke/pythonlibs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker删除none标签镜像："><span class="nav-number">2.</span> <span class="nav-text">docker删除none标签镜像：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#go使用reflect-TypeOf-x-判断x的数据类型：import-“reflect”"><span class="nav-number">3.</span> <span class="nav-text">go使用reflect.TypeOf(x)判断x的数据类型：import “reflect”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看当前目录下各文件夹占用空间，深度1："><span class="nav-number">4.</span> <span class="nav-text">查看当前目录下各文件夹占用空间，深度1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-在windows下编译Linux下可执行文件-一定要用cmd-，在程序根目录下设置编译环境："><span class="nav-number">5.</span> <span class="nav-text">Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux后台运行并且不生成nohup-out文件："><span class="nav-number">6.</span> <span class="nav-text">Linux后台运行并且不生成nohup.out文件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓包命令-："><span class="nav-number">7.</span> <span class="nav-text">抓包命令 ：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python扩展包大全：https-www-lfd-uci-edu-gohlke-pythonlibs"><span class="nav-number">1.</span> <span class="nav-text">Python扩展包大全：https://www.lfd.uci.edu/~gohlke/pythonlibs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker删除none标签镜像："><span class="nav-number">2.</span> <span class="nav-text">docker删除none标签镜像：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#go使用reflect-TypeOf-x-判断x的数据类型：import-“reflect”"><span class="nav-number">3.</span> <span class="nav-text">go使用reflect.TypeOf(x)判断x的数据类型：import “reflect”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看当前目录下各文件夹占用空间，深度1："><span class="nav-number">4.</span> <span class="nav-text">查看当前目录下各文件夹占用空间，深度1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-在windows下编译Linux下可执行文件-一定要用cmd-，在程序根目录下设置编译环境："><span class="nav-number">5.</span> <span class="nav-text">Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux后台运行并且不生成nohup-out文件："><span class="nav-number">6.</span> <span class="nav-text">Linux后台运行并且不生成nohup.out文件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓包命令-："><span class="nav-number">7.</span> <span class="nav-text">抓包命令 ：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#php容器中添加pdo-mysql扩展模块"><span class="nav-number">8.</span> <span class="nav-text">php容器中添加pdo_mysql扩展模块</span></a></li></ol></div>
             
 
           </div>
