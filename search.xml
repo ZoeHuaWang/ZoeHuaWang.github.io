@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[最新稳定万能vip视频解析接口]]></title>
     <url>%2F2019%2F01%2F09%2F%E6%9C%80%E6%96%B0%E7%A8%B3%E5%AE%9A%E4%B8%87%E8%83%BDvip%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90%E6%8E%A5%E5%8F%A3%2F</url>
-    <content type="text"><![CDATA[全网解析 支持站点奇艺视频 腾讯 优酷 土豆 芒果 乐视 搜狐 PPTV 华数TV 风行 咪咕 哔哩哔哩 ACfun 暴风 CCTV CNTV 范特西 9i广场舞 搜狐自媒体 M1905视频 看看视频 27盘 虎牙直播 全民直播 战旗直播 人人视频 爆米花 今日头条 天翼视频 糖豆视频 龙珠视频 快手视频一直播 新浪视频 360小视频 熊猫TV 斗鱼TV 花椒直播 网易公开课 音悦台 秒拍网 美拍网 爱拍 凤凰视频 梨视频 微录客 人民微视频 17173视频 优米视频 m3u8 mp4视频 微博视频 YY视频 私有云资源 https://cdn.yangju.vip/k/?url=后面加上播放的地址即可1234567https://cdn.yangju.vip/k/?url=https://jx.lache.me/cc/?url=https://api.653520.top/vip/?url=https://jx.ab33.top/vip/?url=https://vip.mpos.ren/v/?url=https://jx.000180.top/jx/?url=https://jx.km58.top/jx/?url= 永久性，重要的是够稳定！而且CDN加速！！解析接口支持:URL模式]]></content>
+    <content type="text"><![CDATA[全网解析 支持站点奇艺视频 腾讯 优酷 土豆 芒果 乐视 搜狐 PPTV 华数TV 风行 咪咕 哔哩哔哩 ACfun 暴风 CCTV CNTV 范特西 9i广场舞 搜狐自媒体 M1905视频 看看视频 27盘 虎牙直播 全民直播 战旗直播 人人视频 爆米花 今日头条 天翼视频 糖豆视频 龙珠视频 快手视频一直播 新浪视频 360小视频 熊猫TV 斗鱼TV 花椒直播 网易公开课 音悦台 秒拍网 美拍网 爱拍 凤凰视频 梨视频 微录客 人民微视频 17173视频 优米视频 m3u8 mp4视频 微博视频 YY视频 私有云资源 https://cdn.yangju.vip/k/?url=后面加上播放的地址即可12345678910https://cdn.yangju.vip/k/?url=https://jx.lache.me/cc/?url=https://api.653520.top/vip/?url=https://jx.ab33.top/vip/?url=https://vip.mpos.ren/v/?url=https://jx.000180.top/jx/?url=https://jx.km58.top/jx/?url=https://api.smq1.com/?url=https://jx.hezeshi.net/ce/jlexi.php?url=https://www.kkflv.com/?url= //Btjson智能解析 永久性，重要的是够稳定！而且CDN加速！！解析接口支持:URL模式]]></content>
   </entry>
   <entry>
     <title><![CDATA[Go的cron定时任务用法]]></title>
@@ -29,35 +29,13 @@
   </entry>
   <entry>
     <title><![CDATA[Golang的格式化输出]]></title>
-    <url>%2F2018%2F10%2F11%2FGolang%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BAfmt%2F</url>
+    <url>%2F2018%2F10%2F11%2FGolang%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA%2F</url>
     <content type="text"><![CDATA[123456# 定义示例类型和变量type Human struct &#123; Name string&#125;var people = Human&#123;Name:&quot;zhangsan&quot;&#125; 1234567普通占位符占位符 说明 举例 输出%v 相应值的默认格式。 Printf(&quot;%v&quot;, people) &#123;zhangsan&#125;，%+v 打印结构体时，会添加字段名 Printf(&quot;%+v&quot;, people) &#123;Name:zhangsan&#125;%#v 相应值的Go语法表示 Printf(&quot;#v&quot;, people) main.Human&#123;Name:&quot;zhangsan&quot;&#125;%T 相应值的类型的Go语法表示 Printf(&quot;%T&quot;, people) main.Human%% 字面上的百分号，并非值的占位符 Printf(&quot;%%&quot;) % 123布尔占位符占位符 说明 举例 输出%t true 或 false。 Printf(&quot;%t&quot;, true) true 12345678910整数占位符占位符 说明 举例 输出%b 二进制表示 Printf(&quot;%b&quot;, 5) 101%c 相应Unicode码点所表示的字符 Printf(&quot;%c&quot;, 0x4E2D) 中%d 十进制表示 Printf(&quot;%d&quot;, 0x12) 18%o 八进制表示 Printf(&quot;%d&quot;, 10) 12%q 单引号围绕的字符字面值，由Go语法安全地转义 Printf(&quot;%q&quot;, 0x4E2D) &apos;中&apos;%x 十六进制表示，字母形式为小写 a-f Printf(&quot;%x&quot;, 13) d%X 十六进制表示，字母形式为大写 A-F Printf(&quot;%x&quot;, 13) D%U Unicode格式：U+1234，等同于 &quot;U+%04X&quot; Printf(&quot;%U&quot;, 0x4E2D) U+4E2D 123456789浮点数和复数的组成部分（实部和虚部）占位符 说明 举例 输出%b 无小数部分的，指数为二的幂的科学计数法， 与 strconv.FormatFloat 的 &apos;b&apos; 转换格式一致。例如 -123456p-78%e 科学计数法，例如 -1234.456e+78 Printf(&quot;%e&quot;, 10.2) 1.020000e+01%E 科学计数法，例如 -1234.456E+78 Printf(&quot;%e&quot;, 10.2) 1.020000E+01%f 有小数点而无指数，例如 123.456 Printf(&quot;%f&quot;, 10.2) 10.200000%g 根据情况选择 %e 或 %f 以产生更紧凑的（无末尾的0）输出 Printf(&quot;%g&quot;, 10.20) 10.2%G 根据情况选择 %E 或 %f 以产生更紧凑的（无末尾的0）输出 Printf(&quot;%G&quot;, 10.20+2i) (10.2+2i) 123456字符串与字节切片占位符 说明 举例 输出%s 输出字符串表示（string类型或[]byte) Printf(&quot;%s&quot;, []byte(&quot;Go语言&quot;)) Go语言%q 双引号围绕的字符串，由Go语法安全地转义 Printf(&quot;%q&quot;, &quot;Go语言&quot;) &quot;Go语言&quot;%x 十六进制，小写字母，每字节两个字符 Printf(&quot;%x&quot;, &quot;golang&quot;) 676f6c616e67%X 十六进制，大写字母，每字节两个字符 Printf(&quot;%X&quot;, &quot;golang&quot;) 676F6C616E67 123指针占位符 说明 举例 输出%p 十六进制表示，前缀 0x Printf(&quot;%p&quot;, &amp;people) 0x4f57f0 12345678910111213其它标记占位符 说明 举例 输出+ 总打印数值的正负号；对于%q（%+q）保证只输出ASCII编码的字符。 Printf(&quot;%+q&quot;, &quot;中文&quot;) &quot;\u4e2d\u6587&quot;- 在右侧而非左侧填充空格（左对齐该区域）# 备用格式：为八进制添加前导 0（%#o） Printf(&quot;%#U&quot;, &apos;中&apos;) U+4E2D 为十六进制添加前导 0x（%#x）或 0X（%#X），为 %p（%#p）去掉前导 0x； 如果可能的话，%q（%#q）会打印原始 （即反引号围绕的）字符串； 如果是可打印字符，%U（%#U）会写出该字符的 Unicode 编码形式（如字符 x 会被打印成 U+0078 &apos;x&apos;）。&apos; &apos; (空格)为数值中省略的正负号留出空白（% d）； 以十六进制（% x, % X）打印字符串或切片时，在字节之间用空格隔开0 填充前导的0而非空格；对于数字，这会将填充移到正负号之后 golang没有 ‘%u’ 点位符，若整数为无符号类型，默认就会被打印成无符号的。宽度与精度的控制格式以Unicode码点为单位。宽度为该数值占用区域的最小宽度；精度为小数点之后的位数。操作数的类型为int时，宽度与精度都可用字符 ‘*’ 表示。对于 %g/%G 而言，精度为所有数字的总数，例如：123.45，%.4g 会打印123.5，（而 %6.2f 会打印123.45）。%e 和 %f 的默认精度为6对大多数的数值类型而言，宽度为输出的最小字符数，如果必要的话会为已格式化的形式填充空格。而以字符串类型，精度为输出的最大字符数，如果必要的话会直接截断。]]></content>
       <categories>
         <category>Golang</category>
       </categories>
       <tags>
         <tag>Go记录</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[openresty笔记]]></title>
-    <url>%2F2018%2F09%2F25%2Fopenresty%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[–启动命令：/usr/local/openresty/bin/openresty–停止命令：/usr/local/openresty/bin/openresty -s stop–重启命令：/usr/local/openresty/bin/openresty -s reload–检验nginx配置是否正确：/usr/local/openresty/bin/openresty -t 开发时可以把server里面的location中的 lua_code_cache 设置为 off; 线上不要，代价太大。 ngx.say() 直接返回请求结果ngx.req.read_body() 获取post body值ngx.req.get_post_args() 获取post参数ngx.req.get_uri_args() 获取url中参数 一个lua的表函数要有类似C++类函数的this指针（self）用冒号(:)调用函数时，会默认传一个值(self)作为第一个参数;用点(.)调用函数时，则没有； 连。接。调。用。redis redis模块引用：在nginx主配置文件的http部分添加如下配置 ，其中”;;”表示默认搜索路径。lua_package_path “/usr/local/openresty/lualib/resty/?.lua;;”; #lua 模块lua_package_cpath “yourpath/?.so;;”; #c模块 local redis = require(“resty.redis”) #导入 resty.redis 模块local red = redis:new() #实例化 redis 对象red:set_timeout(1000) #设置超时（毫秒）local ok, err = red:connect(“127.0.0.1”, 6379) #连接到服务器local ok, err = red:auth(“yourpasswd”) #验证（如果要验证）local ok, err = red:set_keepalive(1000, 100) #将连接添加到连接池中local ok, err = red:set(“dog”, “an animal”) #redis的set操作local res, err = red:get(“dog”) #redis的get操作red:close() #关闭连接,如果使用连接池就不需要关闭 启用连接池需要开启 lua_code_cache on测试连接池时，线程数需要小于set_keepalive中的第二个参数（即连接数）]]></content>
-      <categories>
-        <category>Linux世界</category>
-      </categories>
-      <tags>
-        <tag>Openresty</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[CentOS7.3编译安装go1.8.1]]></title>
-    <url>%2F2018%2F09%2F25%2FCentOS7-3%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85go1-8-1%2F</url>
-    <content type="text"><![CDATA[go1.8.1下载地址https://golang.org/dl/，这里下载go1.8.1.src.tar.gz和go1.4.3.src.tar.gz，下来以后算下md5哈希和官网比对下，以免被加盐； go1.4以上版本安装的时候需先安装下1.4；要么会报类似下面的错：1234##### Building Go bootstrap tool.cmd/distERROR: Cannot find /root/go1.4/bin/go.Set $GOROOT_BOOTSTRAP to a working Go tree &gt;= Go 1.4. 开始安装：12345yum install gcc glibc-devel -ytar -C /root/ -xvf go1.4.3.src.tar.gzmv /root/go/ /root/go1.4cd /root/go1.4/src./all.bash 约１分钟左右安装完成，设置下环境变量并重新加载123echo &quot;export PATH=$PATH:/root/go1.4/bin&quot; &gt;&gt; /etc/profileecho &quot;export GOROOT=/root/go1.4&quot; &gt;&gt; /etc/profilesource /etc/profile 使用go version查看版本已经是go1.4.3了 开始安装go1.8.1123tar -C /usr/local/ -xvf go1.8.1.src.tar.gzcd /usr/local/go/src/./all.bash 安装完成以后，清除掉之前添加的/etc/profile里面的环境变量信息，增加如下配置123export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/usr/local/go-projects 重新加载配置source /etc/profile 查看版本go version,已经是1.8.1了 创建go的hello world程序：1234567package mainimport &quot;fmt&quot;func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125; 保存为hello.go直接运行 go run hello.go返回hello，world！ 至此，go1.8.1安装完毕！或者直接使用编译好的包：go1.10.1.linux-amd64.tar.gz下载go$wget https://studygolang.com/dl/golang/go1.10.1.linux-amd64.tar.gz$tar -xvf go1.10.1.linux-amd64.tar.gz设置环境变量$vim /etc/profile添加12345export GOPATH=/data/work/gopathexport GOBIN=$GOPATH/binexport GOROOT=/data/work/goexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GOBINsource /etc/profile $GOPATH工作目录结构，约定有三个子目录（需要自行创建）：src ——存放源代码文件pkg——存放编译后的文件bin ——存放编译后的可执行文件测试环境:创建目录 /data/work/gopath/src123$mkdir helloworld$cd helloworld$vim main.go 输入:1234567package main import &quot;fmt&quot; func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125;]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>Linux上安装GO</tag>
       </tags>
   </entry>
   <entry>
@@ -69,6 +47,28 @@
       </categories>
       <tags>
         <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7.3编译安装go1.8.1]]></title>
+    <url>%2F2018%2F09%2F25%2FCentOS7.3%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85go1.8.1%2F</url>
+    <content type="text"><![CDATA[go1.8.1下载地址https://golang.org/dl/，这里下载go1.8.1.src.tar.gz和go1.4.3.src.tar.gz，下来以后算下md5哈希和官网比对下，以免被加盐； go1.4以上版本安装的时候需先安装下1.4；要么会报类似下面的错：1234##### Building Go bootstrap tool.cmd/distERROR: Cannot find /root/go1.4/bin/go.Set $GOROOT_BOOTSTRAP to a working Go tree &gt;= Go 1.4. 开始安装：12345yum install gcc glibc-devel -ytar -C /root/ -xvf go1.4.3.src.tar.gzmv /root/go/ /root/go1.4cd /root/go1.4/src./all.bash 约１分钟左右安装完成，设置下环境变量并重新加载123echo &quot;export PATH=$PATH:/root/go1.4/bin&quot; &gt;&gt; /etc/profileecho &quot;export GOROOT=/root/go1.4&quot; &gt;&gt; /etc/profilesource /etc/profile 使用go version查看版本已经是go1.4.3了 开始安装go1.8.1123tar -C /usr/local/ -xvf go1.8.1.src.tar.gzcd /usr/local/go/src/./all.bash 安装完成以后，清除掉之前添加的/etc/profile里面的环境变量信息，增加如下配置123export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/usr/local/go-projects 重新加载配置source /etc/profile 查看版本go version,已经是1.8.1了 创建go的hello world程序：1234567package mainimport &quot;fmt&quot;func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125; 保存为hello.go直接运行 go run hello.go返回hello，world！ 至此，go1.8.1安装完毕！或者直接使用编译好的包：go1.10.1.linux-amd64.tar.gz下载go$wget https://studygolang.com/dl/golang/go1.10.1.linux-amd64.tar.gz$tar -xvf go1.10.1.linux-amd64.tar.gz设置环境变量$vim /etc/profile添加12345export GOPATH=/data/work/gopathexport GOBIN=$GOPATH/binexport GOROOT=/data/work/goexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GOBINsource /etc/profile $GOPATH工作目录结构，约定有三个子目录（需要自行创建）：src ——存放源代码文件pkg——存放编译后的文件bin ——存放编译后的可执行文件测试环境:创建目录 /data/work/gopath/src123$mkdir helloworld$cd helloworld$vim main.go 输入:1234567package main import &quot;fmt&quot; func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125;]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Linux上安装GO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[openresty笔记]]></title>
+    <url>%2F2018%2F09%2F25%2Fopenresty%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[–启动命令：/usr/local/openresty/bin/openresty–停止命令：/usr/local/openresty/bin/openresty -s stop–重启命令：/usr/local/openresty/bin/openresty -s reload–检验nginx配置是否正确：/usr/local/openresty/bin/openresty -t 开发时可以把server里面的location中的 lua_code_cache 设置为 off; 线上不要，代价太大。 ngx.say() 直接返回请求结果ngx.req.read_body() 获取post body值ngx.req.get_post_args() 获取post参数ngx.req.get_uri_args() 获取url中参数 一个lua的表函数要有类似C++类函数的this指针（self）用冒号(:)调用函数时，会默认传一个值(self)作为第一个参数;用点(.)调用函数时，则没有； 连。接。调。用。redis redis模块引用：在nginx主配置文件的http部分添加如下配置 ，其中”;;”表示默认搜索路径。lua_package_path “/usr/local/openresty/lualib/resty/?.lua;;”; #lua 模块lua_package_cpath “yourpath/?.so;;”; #c模块 local redis = require(“resty.redis”) #导入 resty.redis 模块local red = redis:new() #实例化 redis 对象red:set_timeout(1000) #设置超时（毫秒）local ok, err = red:connect(“127.0.0.1”, 6379) #连接到服务器local ok, err = red:auth(“yourpasswd”) #验证（如果要验证）local ok, err = red:set_keepalive(1000, 100) #将连接添加到连接池中local ok, err = red:set(“dog”, “an animal”) #redis的set操作local res, err = red:get(“dog”) #redis的get操作red:close() #关闭连接,如果使用连接池就不需要关闭 启用连接池需要开启 lua_code_cache on测试连接池时，线程数需要小于set_keepalive中的第二个参数（即连接数）]]></content>
+      <categories>
+        <category>Linux世界</category>
+      </categories>
+      <tags>
+        <tag>Openresty</tag>
       </tags>
   </entry>
   <entry>
@@ -94,25 +94,25 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[基于Python3的Flask教程中文版]]></title>
-    <url>%2F2018%2F09%2F24%2F%E5%9F%BA%E4%BA%8E%20Python%203%20%E7%9A%84%20Flask%20%E6%95%99%E7%A8%8B%E4%B8%AD%E6%96%87%E7%89%88%2F</url>
-    <content type="text"><![CDATA[第一章：Hello, World!第二章：模板第三章：Web表单第四章：数据库第五章：用户登录第六章：个人主页和头像第七章：错误处理第八章：粉丝第九章：分页第十章：邮件支持第十一章：美化第十二章：日期和时间第十三章：国际化和本地化第十四章：Ajax第十五章：优化应用结构第十六章：全文搜索第十七章：Linux上的部署第十八章：Heroku上的部署第十九章：Docker容器上的部署第二十章：加点JavaScript魔法第二十一章：用户通知第二十二章：后台作业第二十三章：应用程序编程接口（API）]]></content>
-      <categories>
-        <category>Python3</category>
-      </categories>
-      <tags>
-        <tag>Flask教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[学习中的一些记录，随心记]]></title>
-    <url>%2F2018%2F09%2F24%2F%E9%9A%8F%E5%BF%83%E7%AC%94%E8%AE%B0%2F</url>
+    <url>%2F2018%2F09%2F24%2F%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95%EF%BC%8C%E9%9A%8F%E5%BF%83%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[Python扩展包大全：https://www.lfd.uci.edu/~gohlke/pythonlibsdocker删除none标签镜像：1$ docker images|grep none|awk '&#123;print $3 &#125;'|xargs docker rmi go使用reflect.TypeOf(x)判断x的数据类型：import “reflect”查看当前目录下各文件夹占用空间，深度1：1$ du -h --max-depth=1 Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：1234SET CGO_ENABLED=0SET GOOS=linux SET GOARCH=amd64go build Linux后台运行并且不生成nohup.out文件：1nohup ./程序名 &gt;/dev/null 2&gt;&amp;1 &amp; 抓包命令 ：12tcpdump -iany host 127.0.0.1 -XNnn tcpdump -iany port 80 -XNnn php容器中添加pdo_mysql扩展模块1docker-php-ext-install pdo_mysql]]></content>
       <categories>
         <category>随心笔记</category>
       </categories>
       <tags>
         <tag>烂笔头</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[基于Python3的Flask教程中文版]]></title>
+    <url>%2F2018%2F09%2F24%2F%E5%9F%BA%E4%BA%8EPython3%E7%9A%84Flask%E6%95%99%E7%A8%8B%E4%B8%AD%E6%96%87%E7%89%88%2F</url>
+    <content type="text"><![CDATA[第一章：Hello, World!第二章：模板第三章：Web表单第四章：数据库第五章：用户登录第六章：个人主页和头像第七章：错误处理第八章：粉丝第九章：分页第十章：邮件支持第十一章：美化第十二章：日期和时间第十三章：国际化和本地化第十四章：Ajax第十五章：优化应用结构第十六章：全文搜索第十七章：Linux上的部署第十八章：Heroku上的部署第十九章：Docker容器上的部署第二十章：加点JavaScript魔法第二十一章：用户通知第二十二章：后台作业第二十三章：应用程序编程接口（API）]]></content>
+      <categories>
+        <category>Python3</category>
+      </categories>
+      <tags>
+        <tag>Flask教程</tag>
       </tags>
   </entry>
   <entry>
