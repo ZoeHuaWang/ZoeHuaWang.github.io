@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[学习Docker之Dockerfile]]></title>
+    <url>%2F2019%2F02%2F26%2F%E5%AD%A6%E4%B9%A0Docker%E4%B9%8BDockerfile%2F</url>
+    <content type="text"><![CDATA[组成部分| 部分 | 命令 || 基础镜像信息 | FROM || 维护者信息 | MAINTAINER || 镜像操作指令 | RUN、COPY、ADD、EXPOSE、WORKDIR、ONBUILD、USER、VOLUME等 || 容器启动时执行指令 | CMD、ENTRYPOINT |各命令详解FROM指定哪种镜像作为新镜像的基础镜像，如：1FROM ubuntu:14.04MAINTAINER指明该镜像的作者和其电子邮件，如：1MAINTAINER Zoe.wang &quot;xxxxxxx@qq.com&quot;RUN在新镜像内部执行的命令，比如安装一些软件、配置一些基础环境，可使用\来换行，如：12RUN echo &apos;hello docker!&apos; \ &gt; /usr/local/file.txt也可以使用exec格式RUN [“executable”, “param1”, “param2”]的命令，如：1RUN [&quot;apt-get&quot;,&quot;install&quot;,&quot;-y&quot;,&quot;nginx&quot;]要注意的是，executable是命令，后面的param是参数COPY将主机的文件复制到镜像内，如果目的位置不存在，Docker会自动创建所有需要的目录结构，但是它只是单纯的复制，并不会去做文件提取和解压工作。如：1COPY application.yml /etc/springboot/hello-service/src/resources注意：需要复制的目录一定要放在Dockerfile文件的同级目录下ADD将主机的文件复制到镜像中，跟COPY一样，限制条件和使用方式都一样，如：1ADD application.yml /etc/springboot/hello-service/src/resourcesEXPOSE暴露镜像的端口供主机做映射，启动镜像时，使用-P参数来讲镜像端口与宿主机的随机端口做映射。使用方式（可指定多个）：123EXPOSE 8080 EXPOSE 8081...WORKDIR在构建镜像时，指定镜像的工作目录，之后的命令都是基于此工作目录，如果不存在，则会创建目录。如1234WORKDIR /usr/localWORKDIR webserviceRUN echo &apos;hello docker&apos; &gt; text.txt...最终会在/usr/local/webservice/目录下生成text.txt文件ONBUILD当一个包含ONBUILD命令的镜像被用作其他镜像的基础镜像时(比如用户的镜像需要从某为准备好的位置添加源代码，或者用户需要执行特定于构建镜像的环境的构建脚本)，该命令就会执行。如创建镜像image-A1234FROM ubuntu...ONBUILD ADD . /var/www...然后创建镜像image-B，指定image-A为基础镜像，如12FROM image-A...然后在构建image-B的时候，日志上显示如下:1234Step 0 : FROM image-A# Execting 1 build triggersStep onbuild-0 : ADD . /var/www...USER指定该镜像以什么样的用户去执行，如：1USER mongoVOLUME用来向基于镜像创建的容器添加卷。比如你可以将mongodb镜像中存储数据的data文件指定为主机的某个文件。(容器内部建议不要存储任何数据)如：1VOLUME /data/db /data/configdb注意:VOLUME 主机目录 容器目录CMD容器启动时需要执行的命令，如：1CMD /bin/bash同样可以使用exec语法，如1CMD [&quot;/bin/bash&quot;]当有多个CMD的时候，只有最后一个生效。ENTRYPOINT作用和用法和CMD一模一样CMD和ENTRYPOINT的区别敲黑板！！！非常重要一定要注意！一定要注意！一定要注意CMD的命令会被 docker run 的命令覆盖而ENTRYPOINT不会CMD和ENTRYPOINT都存在时，CMD的指令变成了ENTRYPOINT的参数，并且此CMD提供的参数会被 docker run 后面的命令覆盖，如：123...ENTRYPOINT [&quot;echo&quot;,&quot;hello&quot;,&quot;i am&quot;]CMD [&quot;docker&quot;]之后启动构建之后的容器使用docker run -ti image 输出“hello i am docker” 使用docker run -ti image world 输出“hello i am world”]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[最新稳定万能vip视频解析接口]]></title>
     <url>%2F2019%2F01%2F09%2F%E6%9C%80%E6%96%B0%E7%A8%B3%E5%AE%9A%E4%B8%87%E8%83%BDvip%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90%E6%8E%A5%E5%8F%A3%2F</url>
     <content type="text"><![CDATA[全网解析 支持站点奇艺视频 腾讯 优酷 土豆 芒果 乐视 搜狐 PPTV 华数TV 风行 咪咕 哔哩哔哩 ACfun 暴风 CCTV CNTV 范特西 9i广场舞 搜狐自媒体 M1905视频 看看视频 27盘 虎牙直播 全民直播 战旗直播 人人视频 爆米花 今日头条 天翼视频 糖豆视频 龙珠视频 快手视频一直播 新浪视频 360小视频 熊猫TV 斗鱼TV 花椒直播 网易公开课 音悦台 秒拍网 美拍网 爱拍 凤凰视频 梨视频 微录客 人民微视频 17173视频 优米视频 m3u8 mp4视频 微博视频 YY视频 私有云资源 https://cdn.yangju.vip/k/?url=后面加上播放的地址即可1234567891011https://cdn.yangju.vip/k/?url=https://jx.lache.me/cc/?url=https://api.653520.top/vip/?url=https://jx.ab33.top/vip/?url=https://vip.mpos.ren/v/?url=https://jx.000180.top/jx/?url=https://jx.km58.top/jx/?url=https://api.smq1.com/?url=https://jx.hezeshi.net/ce/jlexi.php?url=https://www.kkflv.com/?url= //Btjson智能解析https://jx.618g.com/?url= //618G解析 永久性，重要的是够稳定！而且CDN加速！！解析接口支持:URL模式]]></content>
@@ -39,6 +50,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Linux awk命令详解]]></title>
+    <url>%2F2018%2F09%2F25%2Fawk%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[默认每行按空格或TAB分割：awk &#39;{print $1,$4}&#39; log.txt -F,指定分割字符：awk -F : &#39;{print $1,$4}&#39; log.txt 指定多个分割字符,先用:分割,然后再用,分割：awk -F &#39;[:,]&#39; &#39;{print $1,$4}&#39; log.txt -v,指定变量：awk -v a=1 -v b=s &#39;{print $1,$1+a,$1b}&#39; log.txt -f,调用awk脚本：awk -f script.awk log.txt //,纯字符匹配：awk &#39;/dockerroot/&#39; /etc/passwd !//,纯字符不匹配：awk &#39;!/dockerroot/&#39; /etc/passwd /|/,匹配a1或a2：awk &#39;!/a1|a2/&#39; /etc/passwd ~//,字段值匹配：awk &#39;$1~/root/&#39; /etc/passwd !~//,字段值不匹配：awk -F : &#39;$1!~/root/&#39; /etc/passwd IF语句,必须用在{}中，且比较内容用()扩起来if…else…：awk -F: &#39;{if($1~/root/) {print $1} else {print $2}}&#39; /etc/passwd 逻辑运算符：&amp;&amp;?|| 条件表达式：== != &gt; &gt;= while语句：awk -F: &#39;BEGIN{i=1} {while(i&lt;8) print $i,i++}&#39; /etc/passwd NF、NR：NF代表每行字段数，NR代表行号]]></content>
+      <categories>
+        <category>Linux世界</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[openresty笔记]]></title>
     <url>%2F2018%2F09%2F25%2Fopenresty%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[–启动命令：/usr/local/openresty/bin/openresty–停止命令：/usr/local/openresty/bin/openresty -s stop–重启命令：/usr/local/openresty/bin/openresty -s reload–检验nginx配置是否正确：/usr/local/openresty/bin/openresty -t 开发时可以把server里面的location中的 lua_code_cache 设置为 off; 线上不要，代价太大。 ngx.say() 直接返回请求结果ngx.req.read_body() 获取post body值ngx.req.get_post_args() 获取post参数ngx.req.get_uri_args() 获取url中参数 一个lua的表函数要有类似C++类函数的this指针（self）用冒号(:)调用函数时，会默认传一个值(self)作为第一个参数;用点(.)调用函数时，则没有； 连。接。调。用。redis redis模块引用：在nginx主配置文件的http部分添加如下配置 ，其中”;;”表示默认搜索路径。lua_package_path “/usr/local/openresty/lualib/resty/?.lua;;”; #lua 模块lua_package_cpath “yourpath/?.so;;”; #c模块 local redis = require(“resty.redis”) #导入 resty.redis 模块local red = redis:new() #实例化 redis 对象red:set_timeout(1000) #设置超时（毫秒）local ok, err = red:connect(“127.0.0.1”, 6379) #连接到服务器local ok, err = red:auth(“yourpasswd”) #验证（如果要验证）local ok, err = red:set_keepalive(1000, 100) #将连接添加到连接池中local ok, err = red:set(“dog”, “an animal”) #redis的set操作local res, err = red:get(“dog”) #redis的get操作red:close() #关闭连接,如果使用连接池就不需要关闭 启用连接池需要开启 lua_code_cache on测试连接池时，线程数需要小于set_keepalive中的第二个参数（即连接数）]]></content>
@@ -58,17 +80,6 @@
       </categories>
       <tags>
         <tag>Linux上安装GO</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Linux awk命令详解]]></title>
-    <url>%2F2018%2F09%2F25%2Fawk%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[默认每行按空格或TAB分割：awk &#39;{print $1,$4}&#39; log.txt -F,指定分割字符：awk -F : &#39;{print $1,$4}&#39; log.txt 指定多个分割字符,先用:分割,然后再用,分割：awk -F &#39;[:,]&#39; &#39;{print $1,$4}&#39; log.txt -v,指定变量：awk -v a=1 -v b=s &#39;{print $1,$1+a,$1b}&#39; log.txt -f,调用awk脚本：awk -f script.awk log.txt //,纯字符匹配：awk &#39;/dockerroot/&#39; /etc/passwd !//,纯字符不匹配：awk &#39;!/dockerroot/&#39; /etc/passwd /|/,匹配a1或a2：awk &#39;!/a1|a2/&#39; /etc/passwd ~//,字段值匹配：awk &#39;$1~/root/&#39; /etc/passwd !~//,字段值不匹配：awk -F : &#39;$1!~/root/&#39; /etc/passwd IF语句,必须用在{}中，且比较内容用()扩起来if…else…：awk -F: &#39;{if($1~/root/) {print $1} else {print $2}}&#39; /etc/passwd 逻辑运算符：&amp;&amp;?|| 条件表达式：== != &gt; &gt;= while语句：awk -F: &#39;BEGIN{i=1} {while(i&lt;8) print $i,i++}&#39; /etc/passwd NF、NR：NF代表每行字段数，NR代表行号]]></content>
-      <categories>
-        <category>Linux世界</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
       </tags>
   </entry>
   <entry>
