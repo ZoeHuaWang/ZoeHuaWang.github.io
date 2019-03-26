@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://zoehuawang.github.io/img/客服机器人对接QQ和WebIM.png">
 <meta property="og:image" content="https://zoehuawang.github.io/img/消息抄送.png">
 <meta property="og:image" content="https://zoehuawang.github.io/img/发送消息.png">
-<meta property="og:updated_time" content="2019-03-25T10:20:32.749Z">
+<meta property="og:updated_time" content="2019-03-26T02:09:59.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="客服机器人对接QQ和WebIM">
 <meta name="twitter:description" content="分享下智能客服机器人如何通过企点开放平台对接QQ和WebIM">
@@ -407,7 +407,7 @@
       
 
       
-        <font color="red" size="4" face="微软雅黑">QQ和WebIM两种通路的对接方式是一样的，只是两种通路下的客户id方式不一样，因此下面说的对接三步对两种方式来说都能适用</font><br><font color="#9400D3" size="8" face="楷体">整体框架示意图：</font><br><img src="/img/客服机器人对接QQ和WebIM.png"><br><font color="#9400D3" size="8" face="楷体">实现原理：</font><br>实现逻辑其实很简单，首先第三方客户得和企点开放平台对接成功，具体如何对接可以参考企点开放平台官网指导。其次得有自己的一个机器人，这个就是自己决定用哪家了；一切就绪之后可以来看下逻辑步骤。<br><font color="#FF8000" size="5" face="楷体">Step一：</font>指定一个企点工号作为客服机器人，当有客户进线上行消息时候，企点会把消息抄送给第三方<br><img src="/img/消息抄送.png"><br><font color="#FF8000" size="5" face="楷体">Step二：</font>第三方在收到由企点推送过来的客户消息后，利用自己的机器人来判断内容该做出什么回复<br><font color="#FF8000" size="5" face="楷体">Step三：</font>第三方把需要按照机器人回复的内容通过企点消息发送接口来把回复内容发送给客户，客户收到消息流程完毕<br><img src="/img/发送消息.png"><br><font color="red" size="4" face="微软雅黑">如果转接人工客服：在机器人识别出客户需要转人工的时候，可以调用企点的转接接口把客户转接的对应的人工客服上。</font>
+        <font color="red" size="4" face="微软雅黑">QQ和WebIM两种通路的对接方式是一样的，只是两种通路下的客户id方式不一样，因此下面说的对接三步对两种方式来说都能适用</font><br><font color="#9400D3" size="8" face="楷体">整体框架示意图：</font><br><img src="/img/客服机器人对接QQ和WebIM.png"><br><font color="#9400D3" size="8" face="楷体">实现原理：</font><br>实现逻辑其实很简单，首先第三方客户得和企点开放平台对接成功(<font color="#F00078" size="3" face="微软雅黑">第三方有能够给企点回调的地址</font>)，具体如何对接可以参考企点开放平台官网的Demo指导。其次得有自己的一个机器人，这个就是自己决定用哪家了；一切就绪之后可以来看下逻辑步骤。<br><font color="#FF8000" size="5" face="楷体">Step一：</font>指定一个企点工号作为客服机器人，当有客户进线上行消息时候，企点会把消息抄送给第三方<br><img src="/img/消息抄送.png"><br><font color="#FF8000" size="5" face="楷体">Step二：</font>第三方在收到由企点推送过来的客户消息后，利用自己的机器人来判断内容该做出什么回复<br><font color="#FF8000" size="5" face="楷体">Step三：</font>第三方把需要按照机器人回复的内容通过<font color="#F00078" size="3" face="微软雅黑">企点消息发送接口</font>来把回复内容发送给客户，客户收到消息流程完毕<br><img src="/img/发送消息.png"><br><font color="red" size="4" face="微软雅黑">如果转接人工客服：在机器人识别出客户需要转人工的时候，可以调用</font><font color="#F00078" size="4" face="微软雅黑">企点的会话转接接口</font><font color="red" size="4" face="微软雅黑">把客户转接的对应的人工客服上。</font>
 
       
     </div>
