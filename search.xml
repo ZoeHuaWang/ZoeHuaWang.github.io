@@ -72,17 +72,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS7.3编译安装go1.8.1]]></title>
-    <url>%2F2018%2F09%2F25%2FCentOS7.3%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85go1.8.1%2F</url>
-    <content type="text"><![CDATA[go1.8.1下载地址https://golang.org/dl/，这里下载go1.8.1.src.tar.gz和go1.4.3.src.tar.gz，下来以后算下md5哈希和官网比对下，以免被加盐； go1.4以上版本安装的时候需先安装下1.4；要么会报类似下面的错：1234##### Building Go bootstrap tool.cmd/distERROR: Cannot find /root/go1.4/bin/go.Set $GOROOT_BOOTSTRAP to a working Go tree &gt;= Go 1.4. 开始安装：12345yum install gcc glibc-devel -ytar -C /root/ -xvf go1.4.3.src.tar.gzmv /root/go/ /root/go1.4cd /root/go1.4/src./all.bash 约１分钟左右安装完成，设置下环境变量并重新加载123echo &quot;export PATH=$PATH:/root/go1.4/bin&quot; &gt;&gt; /etc/profileecho &quot;export GOROOT=/root/go1.4&quot; &gt;&gt; /etc/profilesource /etc/profile 使用go version查看版本已经是go1.4.3了 开始安装go1.8.1123tar -C /usr/local/ -xvf go1.8.1.src.tar.gzcd /usr/local/go/src/./all.bash 安装完成以后，清除掉之前添加的/etc/profile里面的环境变量信息，增加如下配置123export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/usr/local/go-projects 重新加载配置source /etc/profile 查看版本go version,已经是1.8.1了 创建go的hello world程序：1234567package mainimport &quot;fmt&quot;func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125; 保存为hello.go直接运行 go run hello.go返回hello，world！ 至此，go1.8.1安装完毕！或者直接使用编译好的包：go1.10.1.linux-amd64.tar.gz下载go$wget https://studygolang.com/dl/golang/go1.10.1.linux-amd64.tar.gz$tar -xvf go1.10.1.linux-amd64.tar.gz设置环境变量$vim /etc/profile添加12345export GOPATH=/data/work/gopathexport GOBIN=$GOPATH/binexport GOROOT=/data/work/goexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GOBINsource /etc/profile $GOPATH工作目录结构，约定有三个子目录（需要自行创建）：src ——存放源代码文件pkg——存放编译后的文件bin ——存放编译后的可执行文件测试环境:创建目录 /data/work/gopath/src123$mkdir helloworld$cd helloworld$vim main.go 输入:1234567package main import &quot;fmt&quot; func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125;]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>Linux上安装GO</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[openresty笔记]]></title>
     <url>%2F2018%2F09%2F25%2Fopenresty%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[–启动命令：/usr/local/openresty/bin/openresty–停止命令：/usr/local/openresty/bin/openresty -s stop–重启命令：/usr/local/openresty/bin/openresty -s reload–检验nginx配置是否正确：/usr/local/openresty/bin/openresty -t 开发时可以把server里面的location中的 lua_code_cache 设置为 off; 线上不要，代价太大。 ngx.say() 直接返回请求结果ngx.req.read_body() 获取post body值ngx.req.get_post_args() 获取post参数ngx.req.get_uri_args() 获取url中参数 一个lua的表函数要有类似C++类函数的this指针（self）用冒号(:)调用函数时，会默认传一个值(self)作为第一个参数;用点(.)调用函数时，则没有； 连。接。调。用。redis redis模块引用：在nginx主配置文件的http部分添加如下配置 ，其中”;;”表示默认搜索路径。lua_package_path “/usr/local/openresty/lualib/resty/?.lua;;”; #lua 模块lua_package_cpath “yourpath/?.so;;”; #c模块 local redis = require(“resty.redis”) #导入 resty.redis 模块local red = redis:new() #实例化 redis 对象red:set_timeout(1000) #设置超时（毫秒）local ok, err = red:connect(“127.0.0.1”, 6379) #连接到服务器local ok, err = red:auth(“yourpasswd”) #验证（如果要验证）local ok, err = red:set_keepalive(1000, 100) #将连接添加到连接池中local ok, err = red:set(“dog”, “an animal”) #redis的set操作local res, err = red:get(“dog”) #redis的get操作red:close() #关闭连接,如果使用连接池就不需要关闭 启用连接池需要开启 lua_code_cache on测试连接池时，线程数需要小于set_keepalive中的第二个参数（即连接数）]]></content>
@@ -91,6 +80,17 @@
       </categories>
       <tags>
         <tag>Openresty</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7.3编译安装go1.8.1]]></title>
+    <url>%2F2018%2F09%2F25%2FCentOS7.3%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85go1.8.1%2F</url>
+    <content type="text"><![CDATA[go1.8.1下载地址https://golang.org/dl/，这里下载go1.8.1.src.tar.gz和go1.4.3.src.tar.gz，下来以后算下md5哈希和官网比对下，以免被加盐； go1.4以上版本安装的时候需先安装下1.4；要么会报类似下面的错：1234##### Building Go bootstrap tool.cmd/distERROR: Cannot find /root/go1.4/bin/go.Set $GOROOT_BOOTSTRAP to a working Go tree &gt;= Go 1.4. 开始安装：12345yum install gcc glibc-devel -ytar -C /root/ -xvf go1.4.3.src.tar.gzmv /root/go/ /root/go1.4cd /root/go1.4/src./all.bash 约１分钟左右安装完成，设置下环境变量并重新加载123echo &quot;export PATH=$PATH:/root/go1.4/bin&quot; &gt;&gt; /etc/profileecho &quot;export GOROOT=/root/go1.4&quot; &gt;&gt; /etc/profilesource /etc/profile 使用go version查看版本已经是go1.4.3了 开始安装go1.8.1123tar -C /usr/local/ -xvf go1.8.1.src.tar.gzcd /usr/local/go/src/./all.bash 安装完成以后，清除掉之前添加的/etc/profile里面的环境变量信息，增加如下配置123export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/usr/local/go-projects 重新加载配置source /etc/profile 查看版本go version,已经是1.8.1了 创建go的hello world程序：1234567package mainimport &quot;fmt&quot;func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125; 保存为hello.go直接运行 go run hello.go返回hello，world！ 至此，go1.8.1安装完毕！或者直接使用编译好的包：go1.10.1.linux-amd64.tar.gz下载go$wget https://studygolang.com/dl/golang/go1.10.1.linux-amd64.tar.gz$tar -xvf go1.10.1.linux-amd64.tar.gz设置环境变量$vim /etc/profile添加12345export GOPATH=/data/work/gopathexport GOBIN=$GOPATH/binexport GOROOT=/data/work/goexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GOBINsource /etc/profile $GOPATH工作目录结构，约定有三个子目录（需要自行创建）：src ——存放源代码文件pkg——存放编译后的文件bin ——存放编译后的可执行文件测试环境:创建目录 /data/work/gopath/src123$mkdir helloworld$cd helloworld$vim main.go 输入:1234567package main import &quot;fmt&quot; func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125;]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Linux上安装GO</tag>
       </tags>
   </entry>
   <entry>
