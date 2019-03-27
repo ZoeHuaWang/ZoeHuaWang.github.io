@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="企点API," />
 
 
 
@@ -90,17 +90,24 @@
 
 
 
-<meta name="description" content="成功总会有方法，失败必定有原因！">
-<meta name="keywords" content="繁花社3">
-<meta property="og:type" content="website">
-<meta property="og:title" content="繁花社">
-<meta property="og:url" content="https://zoehuawang.github.io/tags/企点在线客服/index.html">
+<meta name="description" content="企点Open API开放平台能力，无缝对接企业现有关键业务系统（CRM，ERP，SCM，HCM，FIN，BI等），这里分享平台是如何实现类似旺旺客服侧能力的">
+<meta name="keywords" content="企点API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="企点自定义传参实现旺旺能力">
+<meta property="og:url" content="https://zoehuawang.github.io/2019/03/27/企点自定义传参实现旺旺能力/index.html">
 <meta property="og:site_name" content="繁花社">
-<meta property="og:description" content="成功总会有方法，失败必定有原因！">
+<meta property="og:description" content="企点Open API开放平台能力，无缝对接企业现有关键业务系统（CRM，ERP，SCM，HCM，FIN，BI等），这里分享平台是如何实现类似旺旺客服侧能力的">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://zoehuawang.github.io/img/旺旺能力预想图.png">
+<meta property="og:image" content="https://zoehuawang.github.io/img/wpa自定义参数.png">
+<meta property="og:image" content="https://zoehuawang.github.io/img/event自定义参数推送.png">
+<meta property="og:image" content="https://zoehuawang.github.io/img/右侧Aio页面.png">
+<meta property="og:image" content="https://zoehuawang.github.io/img/自定义参数流程图.png">
+<meta property="og:updated_time" content="2019-03-27T02:07:22.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="繁花社">
-<meta name="twitter:description" content="成功总会有方法，失败必定有原因！">
+<meta name="twitter:title" content="企点自定义传参实现旺旺能力">
+<meta name="twitter:description" content="企点Open API开放平台能力，无缝对接企业现有关键业务系统（CRM，ERP，SCM，HCM，FIN，BI等），这里分享平台是如何实现类似旺旺客服侧能力的">
+<meta name="twitter:image" content="https://zoehuawang.github.io/img/旺旺能力预想图.png">
 
 
 
@@ -130,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="https://zoehuawang.github.io/tags/企点在线客服/"/>
+  <link rel="canonical" href="https://zoehuawang.github.io/2019/03/27/企点自定义传参实现旺旺能力/"/>
 
 
 
 
 
-  <title>标签: 企点在线客服 | 繁花社</title>
+  <title>企点自定义传参实现旺旺能力 | 繁花社</title>
   
 
 
@@ -155,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,54 +290,222 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>企点在线客服<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zoehuawang.github.io/2019/03/27/企点自定义传参实现旺旺能力/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zoe.Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="繁花社">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/26/企点客服全链路会话漏斗/" itemprop="url">
-              
-                <span itemprop="name">企点客服全链路会话漏斗</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">企点自定义传参实现旺旺能力</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-26T14:26:38+08:00"
-              content="2019-03-26" >
-          03-26
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T14:26:38+08:00">
+                2019-03-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/分享/" itemprop="url" rel="index">
+                    <span itemprop="name">分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          		  		  
+          
+             <span id="/2019/03/27/企点自定义传参实现旺旺能力/" class="leancloud_visitors" data-flag-title="企点自定义传参实现旺旺能力">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  企点Open API开放平台能力，无缝对接企业现有关键业务系统（CRM，ERP，SCM，HCM，FIN，BI等），这里分享平台是如何实现类似旺旺客服侧能力的
+              </div>
+          
+				
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><font color="red" size="4" face="微软雅黑">首先，我们先来看下预想的效果图：</font><br><img src="/img/旺旺能力预想图.png"></p>
+<p><font color="#8E8E8E" size="4" face="微软雅黑">从这个图我们可以知道，用户进入会话前的身份信息和从进入会话的产品页都会被收录在会话窗口右侧自定义的页面上，这个页面可以通过<font color="#F00078" size="4" face="微软雅黑">创建聊天窗口右侧自定义页面接口</font>来创建，那么这些信息又是如何收集到的呢？可以通过<font color="#F00078" size="4" face="微软雅黑">自定义传参</font>接口利用wpa接待组件进行参数传递，当带有自定义参数的wpa被点击的时候，企点srv会把这些自带的参数推送给商户开发者的后台服务器上，利用此过程中收集到的参数与相应的客户id关联就可以在右侧自定义页面中展示对应的信息，实测示例：</font></p>
+<p><font color="#804040" size="4" face="微软雅黑">目前支持的自定义参数为：<br>qidian_ex1、qidian_ex2、qidian_ex3、qidian_ex4、qidian_ex5，值的长度不超过64字节。</font></p>
+<p><font color="#804040" size="4" face="微软雅黑">自定义传参目前分2种：<br>1.静态传参：通过API接口创建接待组件时候可以直接将参数值写入接待组件中<br>2.动态传参：通过API接口或账户中心创建的接待组件，开发者在部署接待组件时可以在页面上设置自定义参数</font></p>
+<p><font color="#8E8E8E" size="4" face="微软雅黑">传参示例：</font><br><img src="/img/wpa自定义参数.png"></p>
+<p><font color="#8E8E8E" size="4" face="微软雅黑">在这里用的是动态传参，相较于静态传参的好处就是可以根据具体业务情况在不同的页面上部署不同的自定义参数，减少需要管理的接待组价数目。此页面定义了两个自定的参数：qidian_ex1和qidian_ex2。<br>当客户点击这个活动页面的wpa组件的时候会，商户开发者服务器会收到相应的event事件推送，并且会把这两个参数携带上推过去，如下面的图：</font><br><img src="/img/event自定义参数推送.png"></p>
+<p><font color="#8E8E8E" size="4" face="微软雅黑">当客服人员打开通过<font color="#F00078" size="4" face="微软雅黑">创建聊天窗口右侧自定义页面接口</font>创建的页面TEST时候，企点会自动跳转到这个TEST页面并在URL参数中返回给商户开发者需要的信息（fromUser、toUser、custId等），toUser只的是客户的openid；如果是网页会话就是个visitorid（只有客户不更换电脑系统和浏览器每个人的id是不会变的），通过toUser就可以与之前的event事件关联起来得到相应的自定义参数。示例图如下：</font><br><img src="/img/右侧Aio页面.png"></p>
+<p><font color="red" size="4" face="微软雅黑">这样用户从哪个商品页进来和携带了哪些客户信息就可以通过这两个参数去匹配出相应的信息进而展示在右侧自定义页面上，是不是就实现了和旺旺客服一样的能力呢</font></p>
+<p><font color="#8E8E8E" size="4" face="微软雅黑">可以通过下面的图来展现整个实现流程</font><br><img src="/img/自定义参数流程图.png"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持就是我更新的动力,谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Zoe.Wang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Zoe.Wang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/企点API/" rel="tag"><i class="fa fa-tag"></i> 企点API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/25/客服机器人对接QQ和WebIM/" rel="next" title="客服机器人对接QQ和WebIM">
+                <i class="fa fa-chevron-left"></i> 客服机器人对接QQ和WebIM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +513,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -400,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -682,6 +864,10 @@ $(function() {
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
