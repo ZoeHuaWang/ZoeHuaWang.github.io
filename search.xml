@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[企点开放平台接入之消息加解密指南]]></title>
+    <url>%2F2019%2F04%2F08%2F%E4%BC%81%E7%82%B9%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%85%A5%E4%B9%8B%E6%B6%88%E6%81%AF%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%8C%87%E5%8D%97%2F</url>
+    <content type="text"><![CDATA[出于安全考虑，第三方开发者服务器在与企点服务器互相传递数据时必须对消息进行加解密（某些事件可能回复时也需要先进行加密）。而通过主调的方式调用接口时则不需要进行加密。 当第三方为集成商模式时后台可能会接收到两种类型的消息：1、用户没有开发能力或自己不处理，企点推送给用户的消息由第三方代收。此时，消息XML体中，ToUserName（即接收者）为企点的原始ID（可通过《接口说明》中的获取授权方信息接口来获得）。2、企点服务器发送给集成商自身的事件推送（如取消授权通知，Ticket推送等）。此时，消息XML体中没有ToUserName字段，而是AppId字段，即企点服务的AppId。这种系统事件推送通知（现在包括推送component_verify_ticket协议和推送取消授权通知），收到后也需进行解密并且只需直接返回字符串”success”就可以。 而当第三方为开发者模式时，则没有上面的第2种消息。具体消息加解密的做法是：1、先对接收到的消息进行验证签名，用于验证消息体的正确性，验签指引请查看本页末相关文档——服务器配置指引2、验签通过之后再对消息进行解密处理，消息解密流程图：3、提供加解密Demo供参考：http://api.qidian.qq.com/wiki/images/file/demo.zip 注意事项：1、EncodingAESKey为消息加解密密钥，长度固定为43个字符，从a-z,A-Z,0-9共62个字符中选取。2、出于安全考虑，开放平台网站提供了修改EncodingAESKey的功能（在EncodingAESKey可能泄漏时进行修改），所以建议企点账号保存当前的和上一次的EncodingAESKey，若当前EncodingAESKey解密失败，则尝试用上一次的EncodingAESKey的解密。回包时，用哪个解密成功，则用此哪个加密对应的回包。 相关文档：服务器配置接入指引]]></content>
+      <categories>
+        <category>分享</category>
+      </categories>
+      <tags>
+        <tag>企点API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[企点开放平台接入服务器配置指南]]></title>
+    <url>%2F2019%2F04%2F08%2F%E4%BC%81%E7%82%B9%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%85%A5%E4%B9%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%2F</url>
+    <content type="text"><![CDATA[1、搭建自己的服务器开发者需要建立一个http或者https服务的Demo，包含了验证签名的逻辑，如图：参数提取php代码示例:123456789101112131415161718192021222324252627282930&lt;?php/* Created by PhpStorm.* User: Administrator* Date: 2016/6/28* Time: 17:28*/ if(isset($_GET[&apos;signature&apos;]))&#123; $signature=$_GET[&apos;signature&apos;]; &#125; if(isset($_GET[&apos;timestamp&apos;]))&#123; $timestamp=$_GET[&apos;timestamp&apos;]; &#125; if(isset($_GET[&apos;nonce&apos;]))&#123; $nonce=$_GET[&apos;nonce&apos;]; &#125; if(isset($_GET[&apos;echostr&apos;]))&#123; $echostr=$_GET[&apos;echostr&apos;]; &#125; $token=&quot;token1&quot;; $params=array($token,$timestamp,$nonce); sort($params,SORT_STRING); $str = implode($params); $sign = sha1($str); if($sign!=$signature)&#123; return 0; &#125; echo $echostr; 2、验证服务准备就绪之后开启服务，回到账户中心点击“检测并保存”按钮，如下图，企点后台会向该服务器发送http的get请求，若提示”验证失败”相关, 请认真检查代码或网络链接等。 注意：服务器地址(URL)校验通过后会存储在企点api后台，后续的事件推送也是请求该地址；区分这2种请求的方法是看http中的request method，服务器签名校验中是GET，事件推送中是POST。事件推送参见消息加解密接入指引 相关文档：消息加解密接入指引]]></content>
+      <categories>
+        <category>分享</category>
+      </categories>
+      <tags>
+        <tag>企点API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[企点开放平台接入指南]]></title>
+    <url>%2F2019%2F04%2F08%2F%E4%BC%81%E7%82%B9%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97%2F</url>
+    <content type="text"><![CDATA[使用方式目前使用企点开发平台有两种方式：主调和回调1、主调：是指开发者通过AppId和AppSecret直接调用企点的开放接口，AppId和AppSecret需要注册获得。2、回调：在有些业务场景中需要用到企点的消息推送能力，企点通过http请求开发者服务器将需要的信息推送给对方服务器，并且对方收到消息后需要做出事件回复响应，这种情况称为企点的回调。此过程中的消息传递都要经过加密处理，消息加解密接入指引请查看本页末相关文档。 注册配置要使用企点开放平台首先要注册成为开发者。1、打开企点官网首页，使用管理员QQ登录2、进入企业管理的开发配置填写企点开发信息和服务器配置信息，服务器配置指引请查看本页末相关文档，配置好后如图：3、配置完成后可自行测试接口调用建议使用Postman进行接口在线调试，Postman下载链接：https://www.getpostman.com/调用说明：1)、开发配置中的AppId和AppSecret可用于换取接口调用凭证access_token，通过access_token来调用其他Api开放接口。2)、我们post数据目前大部分都是以json数据post方法调用。所以json数据要在body中使用raw格式推送。不能使用form-data,或者x-www-urlencoded, 一定要注意，否则调用接口可能失败。 相关文档：服务器配置接入指引消息加解密接入指引获取access_token]]></content>
+      <categories>
+        <category>分享</category>
+      </categories>
+      <tags>
+        <tag>企点API</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[企点自定义传参]]></title>
     <url>%2F2019%2F03%2F27%2F%E4%BC%81%E7%82%B9%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BC%A0%E5%8F%82%2F</url>
     <content type="text"><![CDATA[首先，我们先来看下预想的效果图：从这个图我们可以知道，用户进入会话前的身份信息和从进入会话的产品页都会被收录在会话窗口右侧自定义的页面上，这个客户库页面可以通过创建聊天窗口右侧自定义页面接口来创建，那么这些信息又是如何收集到的呢？接下来可以通过下面的流程图理解下1、当带有自定义参数的wpa被C用户点击并且打开会话窗口的时候，企点srv会获取到这些自定义的参数并且把他们推送到商户开发者的后台服务器上；2、商户开发人员利用收集到的参数信息与相应的客户id关联起来并在本地做好对应的存储关系；3、B侧收到消息打开会话窗口，而当B想要知道是什么样的客户进来了，就可以直接点击窗口右侧的自定义客户库页面；4、客户库页面被点击的瞬间企点srv会自动跳转到这个页面并在URL中携带返回给开发者需要的信息（fromUser、toUser、custId等）；5、商户开发人员拿到对应的客户id与之前的本地存储匹配就可以获取到自定义的参数；6、有了自定义的参数就可以去自己的客户系统里面拿取相应的客户信息并且展示在这个客户库页面上为了更加有效的清楚整个流程，我们做了一个实际的例子：先通过自定义传参接口给wpa添加自定义参数，目前支持的自定义参数为：qidian_ex1、qidian_ex2、qidian_ex3、qidian_ex4、qidian_ex5，值的长度不超过64字节。通过API接口或账户中心创建的接待组件，然后在部署接待组件的页面上设置自定义参数传参示例：此页面定义了两个自定的参数：qidian_ex1和qidian_ex2。当点击下面的wpa组件的时候会，开发者服务器会收到相应的event事件推送，并且会把这两个参数携带上推过去事件推送如下面的图：接着B侧打开通过创建聊天窗口右侧自定义页面接口创建的页面TEST，企点会自动跳转到这个TEST页面并在URL参数中返回给商户开发者需要的信息（fromUser、toUser、custId等），toUser指的是客户的openid；如果是网页会话就是个visitorid（如果客户不更换电脑系统和浏览器每个人的visitorid是不会变的），通过toUser就可以与之前的event事件关联起来得到相应的自定义参数。示例图如下：这样用户从哪个商品页进来和携带了哪些客户信息就可以通过这两个参数去匹配出相应的信息进而展示在右侧自定义页面上，因此就能实现追踪用户来源等信息的能力]]></content>
@@ -14,7 +47,7 @@
   <entry>
     <title><![CDATA[智能客服机器人与企点的对接]]></title>
     <url>%2F2019%2F03%2F25%2F%E6%99%BA%E8%83%BD%E5%AE%A2%E6%9C%8D%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%8E%E4%BC%81%E7%82%B9%E7%9A%84%E5%AF%B9%E6%8E%A5%2F</url>
-    <content type="text"><![CDATA[本文将讲解机器人与企点是如何结合应用的，先来看QQ的通路；对于C侧用户来说面对的是一个机器人，因此用户需要指定一个工号来作为机器人的角色统一回复。QQ用户、机器人和客服人员这三者之间的关系网如图：下面来逐步解析整个消息的走向：1、当C侧用户通过wpa触点进入后，开始上行消息到机器人工号2、上行消息后，企点svr会把消息推送给第三方后台服务，抄送示例图：3、第三方拿到消息之后，把消息给到机器人处理是否需要转人工&nbsp;&nbsp;&nbsp;&nbsp;A、不需要转接人工:&nbsp;&nbsp;&nbsp;&nbsp;1、直接通过FAQ问答系统匹配相应的回复给第三方处理&nbsp;&nbsp;&nbsp;&nbsp;2、第三方得到机器人的回复后调用企点的消息发送接口，通过机器人工号将消息下行到C侧用户，如图：&nbsp;&nbsp;&nbsp;&nbsp;B、如果需要转人工，那就利用企点的QQ会话转接接口把会话转到人工客服，由人工来接待这是一个理想中的整体流程，但整个过程中还会涉及到一些不完美的细节，我们一起来看下。一、在寻求人工客服的时候，C触及到人工客服B方式有个特殊的情况：就是并不是通过wpa触点进来，而是直接通过号码搜索或好友聊天的方式直接就联系到B了，那么这样的话机器人就起不到作用了。这虽然是一种特殊情况避免不了，但发生的概率肯定是十分低二、人工接待分配逻辑，在机器人工号转人工客服的时候，QQ会话转接接口的toOpenid参数是一个客服工号，并不能指定接待组；因此这个分配逻辑只能是用户自己来决定，截止到2019年4月1日转接接口都还不能做到转接给接待组三、消息过滤逻辑，因为企点这边所有的消息推送都会推送给第三方后台，为了避免消息错乱重复等还需要制定一个消息过滤逻辑WebIm通路与QQ通路情况类似，可以用同一套方法，但webim通路在人工接待分配逻辑这点不同的是可以指定转接到接待组；还有一个就是因为是临时访客会话所以也不存在C不通过wpa组件直接触达B的情况发生。]]></content>
+    <content type="text"><![CDATA[本文将讲解机器人与企点是如何结合应用的，先来看QQ的通路；对于C侧用户来说面对的是一个机器人，因此用户需要指定一个工号来作为机器人的角色统一回复。QQ用户、机器人和客服人员这三者之间的关系网如图：下面来逐步解析整个消息的走向：1、当C侧用户通过wpa触点进入后，开始上行消息到机器人工号2、上行消息后，企点svr会把消息推送给第三方后台服务，抄送示例图：3、第三方拿到消息之后，把消息给到机器人处理是否需要转人工&nbsp;&nbsp;&nbsp;&nbsp;A、不需要转接人工:&nbsp;&nbsp;&nbsp;&nbsp;1、直接通过FAQ问答系统匹配相应的回复给第三方处理&nbsp;&nbsp;&nbsp;&nbsp;2、第三方得到机器人的回复后调用企点的消息发送接口，通过机器人工号将消息下行到C侧用户，如图：&nbsp;&nbsp;&nbsp;&nbsp;B、如果需要转人工，那就利用企点的QQ会话转接接口把会话转到人工客服，由人工来接待这是目前的整体流程，但是还有如下可以优化的细节，我们一起来看下。一、在寻求人工客服的时候，C触及到人工客服B的方式有个特殊的情况：就是并不是通过wpa触点进来，而是直接通过号码搜索或好友聊天的方式跳过机器人直接联系到客服B了，那么这样的话机器人就起不到应有的作用了。虽然这种特殊情况发生的概率极低，但在未来我们也会对相关逻辑进行优化。二、人工接待分配逻辑，在机器人工号转人工客服的时候，QQ会话转接接口的toOpenid参数是一个客服工号，并不能指定接待组；因此这个分配逻辑只能是用户自己来决定，在不久的未来我们也会发布相应的功能接口（截止到2019年4月1日转接接口都还不能做到转接给接待组）三、消息过滤逻辑，因为企点这边所有的消息推送都会推送给第三方后台，为了避免消息错乱重复等问题，第三方开发人员还需要自己制定一个消息过滤逻辑WebIm通路与QQ通路情况类似，可以用同一套方法，但webim通路在人工接待分配逻辑这点不同的是可以指定转接到接待组；还有一个就是因为是临时访客会话，所以不存在C不通过wpa组件直接触达B的情况发生。]]></content>
       <categories>
         <category>分享</category>
       </categories>
@@ -72,14 +105,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[openresty笔记]]></title>
-    <url>%2F2018%2F09%2F25%2Fopenresty%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[–启动命令：/usr/local/openresty/bin/openresty–停止命令：/usr/local/openresty/bin/openresty -s stop–重启命令：/usr/local/openresty/bin/openresty -s reload–检验nginx配置是否正确：/usr/local/openresty/bin/openresty -t 开发时可以把server里面的location中的 lua_code_cache 设置为 off; 线上不要，代价太大。 ngx.say() 直接返回请求结果ngx.req.read_body() 获取post body值ngx.req.get_post_args() 获取post参数ngx.req.get_uri_args() 获取url中参数 一个lua的表函数要有类似C++类函数的this指针（self）用冒号(:)调用函数时，会默认传一个值(self)作为第一个参数;用点(.)调用函数时，则没有； 连。接。调。用。redis redis模块引用：在nginx主配置文件的http部分添加如下配置 ，其中”;;”表示默认搜索路径。lua_package_path “/usr/local/openresty/lualib/resty/?.lua;;”; #lua 模块lua_package_cpath “yourpath/?.so;;”; #c模块 local redis = require(“resty.redis”) #导入 resty.redis 模块local red = redis:new() #实例化 redis 对象red:set_timeout(1000) #设置超时（毫秒）local ok, err = red:connect(“127.0.0.1”, 6379) #连接到服务器local ok, err = red:auth(“yourpasswd”) #验证（如果要验证）local ok, err = red:set_keepalive(1000, 100) #将连接添加到连接池中local ok, err = red:set(“dog”, “an animal”) #redis的set操作local res, err = red:get(“dog”) #redis的get操作red:close() #关闭连接,如果使用连接池就不需要关闭 启用连接池需要开启 lua_code_cache on测试连接池时，线程数需要小于set_keepalive中的第二个参数（即连接数）]]></content>
+    <title><![CDATA[Linux awk命令详解]]></title>
+    <url>%2F2018%2F09%2F25%2Fawk%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[默认每行按空格或TAB分割：awk &#39;{print $1,$4}&#39; log.txt -F,指定分割字符：awk -F : &#39;{print $1,$4}&#39; log.txt 指定多个分割字符,先用:分割,然后再用,分割：awk -F &#39;[:,]&#39; &#39;{print $1,$4}&#39; log.txt -v,指定变量：awk -v a=1 -v b=s &#39;{print $1,$1+a,$1b}&#39; log.txt -f,调用awk脚本：awk -f script.awk log.txt //,纯字符匹配：awk &#39;/dockerroot/&#39; /etc/passwd !//,纯字符不匹配：awk &#39;!/dockerroot/&#39; /etc/passwd /|/,匹配a1或a2：awk &#39;!/a1|a2/&#39; /etc/passwd ~//,字段值匹配：awk &#39;$1~/root/&#39; /etc/passwd !~//,字段值不匹配：awk -F : &#39;$1!~/root/&#39; /etc/passwd IF语句,必须用在{}中，且比较内容用()扩起来if…else…：awk -F: &#39;{if($1~/root/) {print $1} else {print $2}}&#39; /etc/passwd 逻辑运算符：&amp;&amp;?|| 条件表达式：== != &gt; &gt;= while语句：awk -F: &#39;BEGIN{i=1} {while(i&lt;8) print $i,i++}&#39; /etc/passwd NF、NR：NF代表每行字段数，NR代表行号]]></content>
       <categories>
         <category>Linux世界</category>
       </categories>
       <tags>
-        <tag>Openresty</tag>
+        <tag>运维</tag>
       </tags>
   </entry>
   <entry>
@@ -94,14 +127,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Linux awk命令详解]]></title>
-    <url>%2F2018%2F09%2F25%2Fawk%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[默认每行按空格或TAB分割：awk &#39;{print $1,$4}&#39; log.txt -F,指定分割字符：awk -F : &#39;{print $1,$4}&#39; log.txt 指定多个分割字符,先用:分割,然后再用,分割：awk -F &#39;[:,]&#39; &#39;{print $1,$4}&#39; log.txt -v,指定变量：awk -v a=1 -v b=s &#39;{print $1,$1+a,$1b}&#39; log.txt -f,调用awk脚本：awk -f script.awk log.txt //,纯字符匹配：awk &#39;/dockerroot/&#39; /etc/passwd !//,纯字符不匹配：awk &#39;!/dockerroot/&#39; /etc/passwd /|/,匹配a1或a2：awk &#39;!/a1|a2/&#39; /etc/passwd ~//,字段值匹配：awk &#39;$1~/root/&#39; /etc/passwd !~//,字段值不匹配：awk -F : &#39;$1!~/root/&#39; /etc/passwd IF语句,必须用在{}中，且比较内容用()扩起来if…else…：awk -F: &#39;{if($1~/root/) {print $1} else {print $2}}&#39; /etc/passwd 逻辑运算符：&amp;&amp;?|| 条件表达式：== != &gt; &gt;= while语句：awk -F: &#39;BEGIN{i=1} {while(i&lt;8) print $i,i++}&#39; /etc/passwd NF、NR：NF代表每行字段数，NR代表行号]]></content>
+    <title><![CDATA[openresty笔记]]></title>
+    <url>%2F2018%2F09%2F25%2Fopenresty%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[–启动命令：/usr/local/openresty/bin/openresty–停止命令：/usr/local/openresty/bin/openresty -s stop–重启命令：/usr/local/openresty/bin/openresty -s reload–检验nginx配置是否正确：/usr/local/openresty/bin/openresty -t 开发时可以把server里面的location中的 lua_code_cache 设置为 off; 线上不要，代价太大。 ngx.say() 直接返回请求结果ngx.req.read_body() 获取post body值ngx.req.get_post_args() 获取post参数ngx.req.get_uri_args() 获取url中参数 一个lua的表函数要有类似C++类函数的this指针（self）用冒号(:)调用函数时，会默认传一个值(self)作为第一个参数;用点(.)调用函数时，则没有； 连。接。调。用。redis redis模块引用：在nginx主配置文件的http部分添加如下配置 ，其中”;;”表示默认搜索路径。lua_package_path “/usr/local/openresty/lualib/resty/?.lua;;”; #lua 模块lua_package_cpath “yourpath/?.so;;”; #c模块 local redis = require(“resty.redis”) #导入 resty.redis 模块local red = redis:new() #实例化 redis 对象red:set_timeout(1000) #设置超时（毫秒）local ok, err = red:connect(“127.0.0.1”, 6379) #连接到服务器local ok, err = red:auth(“yourpasswd”) #验证（如果要验证）local ok, err = red:set_keepalive(1000, 100) #将连接添加到连接池中local ok, err = red:set(“dog”, “an animal”) #redis的set操作local res, err = red:get(“dog”) #redis的get操作red:close() #关闭连接,如果使用连接池就不需要关闭 启用连接池需要开启 lua_code_cache on测试连接池时，线程数需要小于set_keepalive中的第二个参数（即连接数）]]></content>
       <categories>
         <category>Linux世界</category>
       </categories>
       <tags>
-        <tag>运维</tag>
+        <tag>Openresty</tag>
       </tags>
   </entry>
   <entry>
