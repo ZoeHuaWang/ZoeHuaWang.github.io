@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[python中yield的用法详解]]></title>
+    <url>%2F2019%2F06%2F05%2Fpython%E4%B8%ADyield%E7%9A%84%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[首先，如果你还没有对yield有个初步分认识，那么你先把yield看做“return”，这个是直观的，它首先是个return，普通的return是什么意思，就是在程序中返回某个值，返回之后程序就不再往下运行了。看做return之后再把它看做一个是生成器（generator）的一部分（带yield的函数才是真正的迭代器），好了，如果你对这些不明白的话，那先把yield看做return,然后直接看下面的程序： 123456789def foo(): print("starting...") while True: res = yield 4 print("res:",res)g = foo()print(next(g))print("*"*20)print(next(g)) 就这么简单的几行代码就让你明白什么是yield，代码的输出这个： 12345starting...4********************res: None4 下面直接解释代码运行顺序，相当于代码单步调试： 1.程序开始执行以后，因为foo函数中有yield关键字，所以foo函数并不会真的执行，而是先得到一个生成器g(相当于一个对象) 2.直到调用next方法，foo函数正式开始执行，先执行foo函数中的print方法，然后进入while循环 3.程序遇到yield关键字，然后把yield想想成return,return了一个4之后，程序停止，并没有执行赋值给res操作，此时next(g)语句执行完成，所以输出的前两行（第一个是while上面的print的结果,第二个是return出的结果）是执行print(next(g))的结果， 4.程序执行print(““20)，输出20个* 5.又开始执行下面的print(next(g)),这个时候和上面那个差不多，不过不同的是，这个时候是从刚才那个next程序停止的地方开始执行的，也就是要执行res的赋值操作，这时候要注意，这个时候赋值操作的右边是没有值的（因为刚才那个是return出去了，并没有给赋值操作的左边传参数），所以这个时候res赋值是None,所以接着下面的输出就是res:None, 6.程序会继续在while里执行，又一次碰到yield,这个时候同样return 出4，然后程序停止，print函数输出的4就是这次return出的4. 再看一个这个生成器的send函数的例子，这个例子就把上面那个例子的最后一行换掉了: 123456789def foo(): print("starting...") while True: res = yield 4 print("res:",res)g = foo()print(next(g))print("*"*20)print(g.send(7)) 输出结果： 12345starting...4********************res: 74 程序执行g.send(7)，程序会从yield关键字那一行继续向下运行，send会把7这个值赋值给res变量。 next() 只唤醒yiedl不传递值send() 唤醒yiedl并传递值]]></content>
+      <tags>
+        <tag>Python、Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[企点开放平台接入之消息加解密指南]]></title>
     <url>%2F2019%2F04%2F08%2F%E4%BC%81%E7%82%B9%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%85%A5%E4%B9%8B%E6%B6%88%E6%81%AF%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%8C%87%E5%8D%97%2F</url>
     <content type="text"><![CDATA[出于安全考虑，第三方开发者服务器在与企点服务器互相传递数据时必须对消息进行加解密（某些事件可能回复时也需要先进行加密）。而通过主调的方式调用接口时则不需要进行加密。 当第三方为集成商模式时后台可能会接收到两种类型的消息：1、用户没有开发能力或自己不处理，企点推送给用户的消息由第三方代收。此时，消息XML体中，ToUserName（即接收者）为企点的原始ID（可通过《接口说明》中的获取授权方信息接口来获得）。2、企点服务器发送给集成商自身的事件推送（如取消授权通知，Ticket推送等）。此时，消息XML体中没有ToUserName字段，而是AppId字段，即企点服务的AppId。这种系统事件推送通知（现在包括推送component_verify_ticket协议和推送取消授权通知），收到后也需进行解密并且只需直接返回字符串”success”就可以。 而当第三方为开发者模式时，则没有上面的第2种消息。具体消息加解密的做法是：1、先对接收到的消息进行验证签名，用于验证消息体的正确性，验签指引请查看本页末相关文档——服务器配置指引2、验签通过之后再对消息进行解密处理，消息解密流程图：3、提供加解密Demo供参考：http://api.qidian.qq.com/wiki/images/file/demo.zip 注意事项：1、EncodingAESKey为消息加解密密钥，长度固定为43个字符，从a-z,A-Z,0-9共62个字符中选取。2、出于安全考虑，开放平台网站提供了修改EncodingAESKey的功能（在EncodingAESKey可能泄漏时进行修改），所以建议企点账号保存当前的和上一次的EncodingAESKey，若当前EncodingAESKey解密失败，则尝试用上一次的EncodingAESKey的解密。回包时，用哪个解密成功，则用此哪个加密对应的回包。 相关文档：服务器配置接入指引]]></content>
@@ -105,6 +113,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[openresty笔记]]></title>
+    <url>%2F2018%2F09%2F25%2Fopenresty%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[–启动命令：/usr/local/openresty/bin/openresty–停止命令：/usr/local/openresty/bin/openresty -s stop–重启命令：/usr/local/openresty/bin/openresty -s reload–检验nginx配置是否正确：/usr/local/openresty/bin/openresty -t 开发时可以把server里面的location中的 lua_code_cache 设置为 off; 线上不要，代价太大。 ngx.say() 直接返回请求结果ngx.req.read_body() 获取post body值ngx.req.get_post_args() 获取post参数ngx.req.get_uri_args() 获取url中参数 一个lua的表函数要有类似C++类函数的this指针（self）用冒号(:)调用函数时，会默认传一个值(self)作为第一个参数;用点(.)调用函数时，则没有； 连。接。调。用。redis redis模块引用：在nginx主配置文件的http部分添加如下配置 ，其中”;;”表示默认搜索路径。lua_package_path “/usr/local/openresty/lualib/resty/?.lua;;”; #lua 模块lua_package_cpath “yourpath/?.so;;”; #c模块 local redis = require(“resty.redis”) #导入 resty.redis 模块local red = redis:new() #实例化 redis 对象red:set_timeout(1000) #设置超时（毫秒）local ok, err = red:connect(“127.0.0.1”, 6379) #连接到服务器local ok, err = red:auth(“yourpasswd”) #验证（如果要验证）local ok, err = red:set_keepalive(1000, 100) #将连接添加到连接池中local ok, err = red:set(“dog”, “an animal”) #redis的set操作local res, err = red:get(“dog”) #redis的get操作red:close() #关闭连接,如果使用连接池就不需要关闭 启用连接池需要开启 lua_code_cache on测试连接池时，线程数需要小于set_keepalive中的第二个参数（即连接数）]]></content>
+      <categories>
+        <category>Linux世界</category>
+      </categories>
+      <tags>
+        <tag>Openresty</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CentOS7.3编译安装go1.8.1]]></title>
     <url>%2F2018%2F09%2F25%2FCentOS7.3%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85go1.8.1%2F</url>
     <content type="text"><![CDATA[go1.8.1下载地址https://golang.org/dl/，这里下载go1.8.1.src.tar.gz和go1.4.3.src.tar.gz，下来以后算下md5哈希和官网比对下，以免被加盐； go1.4以上版本安装的时候需先安装下1.4；要么会报类似下面的错：1234##### Building Go bootstrap tool.cmd/distERROR: Cannot find /root/go1.4/bin/go.Set $GOROOT_BOOTSTRAP to a working Go tree &gt;= Go 1.4. 开始安装：12345yum install gcc glibc-devel -ytar -C /root/ -xvf go1.4.3.src.tar.gzmv /root/go/ /root/go1.4cd /root/go1.4/src./all.bash 约１分钟左右安装完成，设置下环境变量并重新加载123echo &quot;export PATH=$PATH:/root/go1.4/bin&quot; &gt;&gt; /etc/profileecho &quot;export GOROOT=/root/go1.4&quot; &gt;&gt; /etc/profilesource /etc/profile 使用go version查看版本已经是go1.4.3了 开始安装go1.8.1123tar -C /usr/local/ -xvf go1.8.1.src.tar.gzcd /usr/local/go/src/./all.bash 安装完成以后，清除掉之前添加的/etc/profile里面的环境变量信息，增加如下配置123export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/usr/local/go-projects 重新加载配置source /etc/profile 查看版本go version,已经是1.8.1了 创建go的hello world程序：1234567package mainimport &quot;fmt&quot;func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125; 保存为hello.go直接运行 go run hello.go返回hello，world！ 至此，go1.8.1安装完毕！或者直接使用编译好的包：go1.10.1.linux-amd64.tar.gz下载go$wget https://studygolang.com/dl/golang/go1.10.1.linux-amd64.tar.gz$tar -xvf go1.10.1.linux-amd64.tar.gz设置环境变量$vim /etc/profile添加12345export GOPATH=/data/work/gopathexport GOBIN=$GOPATH/binexport GOROOT=/data/work/goexport PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$GOBINsource /etc/profile $GOPATH工作目录结构，约定有三个子目录（需要自行创建）：src ——存放源代码文件pkg——存放编译后的文件bin ——存放编译后的可执行文件测试环境:创建目录 /data/work/gopath/src123$mkdir helloworld$cd helloworld$vim main.go 输入:1234567package main import &quot;fmt&quot; func main() &#123; fmt.Println(&quot;Hello, World!&quot;)&#125;]]></content>
@@ -124,17 +143,6 @@
       </categories>
       <tags>
         <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[openresty笔记]]></title>
-    <url>%2F2018%2F09%2F25%2Fopenresty%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[–启动命令：/usr/local/openresty/bin/openresty–停止命令：/usr/local/openresty/bin/openresty -s stop–重启命令：/usr/local/openresty/bin/openresty -s reload–检验nginx配置是否正确：/usr/local/openresty/bin/openresty -t 开发时可以把server里面的location中的 lua_code_cache 设置为 off; 线上不要，代价太大。 ngx.say() 直接返回请求结果ngx.req.read_body() 获取post body值ngx.req.get_post_args() 获取post参数ngx.req.get_uri_args() 获取url中参数 一个lua的表函数要有类似C++类函数的this指针（self）用冒号(:)调用函数时，会默认传一个值(self)作为第一个参数;用点(.)调用函数时，则没有； 连。接。调。用。redis redis模块引用：在nginx主配置文件的http部分添加如下配置 ，其中”;;”表示默认搜索路径。lua_package_path “/usr/local/openresty/lualib/resty/?.lua;;”; #lua 模块lua_package_cpath “yourpath/?.so;;”; #c模块 local redis = require(“resty.redis”) #导入 resty.redis 模块local red = redis:new() #实例化 redis 对象red:set_timeout(1000) #设置超时（毫秒）local ok, err = red:connect(“127.0.0.1”, 6379) #连接到服务器local ok, err = red:auth(“yourpasswd”) #验证（如果要验证）local ok, err = red:set_keepalive(1000, 100) #将连接添加到连接池中local ok, err = red:set(“dog”, “an animal”) #redis的set操作local res, err = red:get(“dog”) #redis的get操作red:close() #关闭连接,如果使用连接池就不需要关闭 启用连接池需要开启 lua_code_cache on测试连接池时，线程数需要小于set_keepalive中的第二个参数（即连接数）]]></content>
-      <categories>
-        <category>Linux世界</category>
-      </categories>
-      <tags>
-        <tag>Openresty</tag>
       </tags>
   </entry>
   <entry>
@@ -160,17 +168,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[学习中的一些记录，随心记]]></title>
-    <url>%2F2018%2F09%2F24%2F%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95%EF%BC%8C%E9%9A%8F%E5%BF%83%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[Python扩展包大全：https://www.lfd.uci.edu/~gohlke/pythonlibsdocker删除none标签镜像：1$ docker images|grep none|awk '&#123;print $3 &#125;'|xargs docker rmi go使用reflect.TypeOf(x)判断x的数据类型：import “reflect”查看当前目录下各文件夹占用空间，深度1：1$ du -h --max-depth=1 Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：1234SET CGO_ENABLED=0SET GOOS=linux SET GOARCH=amd64go build Linux后台运行并且不生成nohup.out文件：1nohup ./程序名 &gt;/dev/null 2&gt;&amp;1 &amp; 抓包命令 ：12tcpdump -iany host 127.0.0.1 -XNnn tcpdump -iany port 80 -XNnn php容器中添加pdo_mysql扩展模块1docker-php-ext-install pdo_mysql]]></content>
-      <categories>
-        <category>随心笔记</category>
-      </categories>
-      <tags>
-        <tag>烂笔头</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[基于Python3的Flask教程中文版]]></title>
     <url>%2F2018%2F09%2F24%2F%E5%9F%BA%E4%BA%8EPython3%E7%9A%84Flask%E6%95%99%E7%A8%8B%E4%B8%AD%E6%96%87%E7%89%88%2F</url>
     <content type="text"><![CDATA[第一章：Hello, World!第二章：模板第三章：Web表单第四章：数据库第五章：用户登录第六章：个人主页和头像第七章：错误处理第八章：粉丝第九章：分页第十章：邮件支持第十一章：美化第十二章：日期和时间第十三章：国际化和本地化第十四章：Ajax第十五章：优化应用结构第十六章：全文搜索第十七章：Linux上的部署第十八章：Heroku上的部署第十九章：Docker容器上的部署第二十章：加点JavaScript魔法第二十一章：用户通知第二十二章：后台作业第二十三章：应用程序编程接口（API）]]></content>
@@ -179,6 +176,17 @@
       </categories>
       <tags>
         <tag>Flask教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[学习中的一些记录，随心记]]></title>
+    <url>%2F2018%2F09%2F24%2F%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95%EF%BC%8C%E9%9A%8F%E5%BF%83%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Python扩展包大全：https://www.lfd.uci.edu/~gohlke/pythonlibsdocker删除none标签镜像：1$ docker images|grep none|awk '&#123;print $3 &#125;'|xargs docker rmi go使用reflect.TypeOf(x)判断x的数据类型：import “reflect”查看当前目录下各文件夹占用空间，深度1：1$ du -h --max-depth=1 Golang 在windows下编译Linux下可执行文件(一定要用cmd)，在程序根目录下设置编译环境：1234SET CGO_ENABLED=0SET GOOS=linux SET GOARCH=amd64go build Linux后台运行并且不生成nohup.out文件：1nohup ./程序名 &gt;/dev/null 2&gt;&amp;1 &amp; 抓包命令 ：12tcpdump -iany host 127.0.0.1 -XNnn tcpdump -iany port 80 -XNnn php容器中添加pdo_mysql扩展模块1docker-php-ext-install pdo_mysql]]></content>
+      <categories>
+        <category>随心笔记</category>
+      </categories>
+      <tags>
+        <tag>烂笔头</tag>
       </tags>
   </entry>
   <entry>
